@@ -8,5 +8,4 @@ public class LoginController {
     public TextField usernameid;
     public Button cancelButtonId;
 
-
 }
