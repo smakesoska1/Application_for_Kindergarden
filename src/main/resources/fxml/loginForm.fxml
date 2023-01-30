@@ -2,34 +2,36 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="283.0" prefWidth="344.0" style="-fx-background-color: #ffd4db;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="10.0" prefWidth="74.2" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.40000381469724" minWidth="249.39999999999998" prefWidth="269.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="10.0" prefWidth="87.4" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.40000381469724" minWidth="249.39999999999998" prefWidth="256.6" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints vgrow="SOMETIMES" />
-    <RowConstraints vgrow="SOMETIMES" />
-    <RowConstraints vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="127.4" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="77.6" minHeight="13.000003814697266" prefHeight="59.400000000000006" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="76.6" minHeight="30.19999999999999" prefHeight="54.400000000000006" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="81.60000000000002" minHeight="59.60000000000002" prefHeight="63.60000000000002" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </GridPane.margin>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding></PasswordField>
-      <TextField GridPane.columnIndex="1">
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </GridPane.margin>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding></TextField>
-      <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
         <buttons>
           <Button defaultButton="true" mnemonicParsing="false" text="Log in" />
             <Button cancelButton="true" mnemonicParsing="false" text="Cancel" />
@@ -41,7 +43,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </ButtonBar>
-      <Label text="Username:">
+      <Label text="Username:" GridPane.rowIndex="1">
          <padding>
             <Insets bottom="5.0" left="5.0" top="5.0" />
          </padding>
@@ -49,7 +51,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Password:" GridPane.rowIndex="1">
+      <Label text="Password:" GridPane.rowIndex="2">
          <padding>
             <Insets bottom="5.0" left="5.0" top="5.0" />
          </padding>
@@ -57,5 +59,13 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </Label>
+      <ImageView fitHeight="93.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+         <image>
+            <Image url="@../img/kindergarden.png" />
+         </image>
+         <GridPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </GridPane.margin>
+      </ImageView>
    </children>
 </GridPane>
