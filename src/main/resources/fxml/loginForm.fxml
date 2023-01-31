@@ -7,8 +7,8 @@
 
 <GridPane prefHeight="283.0" prefWidth="344.0" style="-fx-background-color: #ffd4db;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.LoginController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="10.0" prefWidth="87.4" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.40000381469724" minWidth="249.39999999999998" prefWidth="256.6" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="70.2" prefWidth="86.2" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="183.2" prefWidth="258.2" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="127.4" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
@@ -59,7 +59,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </Label>
-      <ImageView fitHeight="93.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+      <ImageView fitHeight="93.0" fitWidth="279.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <image>
             <Image url="@../img/kindergarden.png" />
          </image>
