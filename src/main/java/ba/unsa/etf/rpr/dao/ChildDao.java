@@ -1,4 +1,4 @@
 package ba.unsa.etf.rpr.dao;
 
-public class ChildDao {
+public interface ChildDao {
 }

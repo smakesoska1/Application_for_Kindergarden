@@ -1,4 +1,4 @@
 package ba.unsa.etf.rpr.dao;
 
-public class TeacherDao {
+public interface TeacherDao {
 }
