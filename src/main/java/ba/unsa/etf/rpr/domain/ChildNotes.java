@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class ChildNotes {
+public class ChildNotes implements Idable{
     private int id;
     private String noteName;
 
