@@ -19,4 +19,12 @@ public class ChildNotes {
     public void setNoteName(String noteName) {
         this.noteName = noteName;
     }
+
+    @Override
+    public String toString() {
+        return "ChildNotes{" +
+                "id=" + id +
+                ", noteName='" + noteName + '\'' +
+                '}';
+    }
 }
