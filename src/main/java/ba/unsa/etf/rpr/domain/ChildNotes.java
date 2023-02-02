@@ -35,9 +35,9 @@ public class ChildNotes {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ChildNotes that = (ChildNotes) o;
+        ChildNotes childNotes = (ChildNotes) o;
 
-        return id == that.id;
+        return id == childNotes.id;
     }
 
     @Override
