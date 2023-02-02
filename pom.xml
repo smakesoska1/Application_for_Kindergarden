@@ -26,11 +26,6 @@
       <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>6.0.6</version>
-    </dependency>
 
     <dependency>
       <groupId>mysql</groupId>
@@ -109,6 +104,16 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>3.4.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <configuration>
+            <archive>
+              <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+            </archive>
+          </configuration>
         </plugin>
 
       </plugins>
