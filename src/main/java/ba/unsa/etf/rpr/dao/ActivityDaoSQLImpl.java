@@ -20,7 +20,7 @@ public class ActivityDaoSQLImpl implements ActivityDao{
     @Override
     public Activity getById(int id) {
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM categories WHERE id = ?");
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM activity WHERE id_activity = ?");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){

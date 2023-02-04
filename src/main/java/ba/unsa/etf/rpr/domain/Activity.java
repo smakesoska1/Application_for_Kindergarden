@@ -36,4 +36,12 @@ public class Activity implements Idable{
     public int hashCode() {
         return Objects.hash(id,activityName);
     }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "id=" + id +
+                ", activityName='" + activityName + '\'' +
+                '}';
+    }
 }
