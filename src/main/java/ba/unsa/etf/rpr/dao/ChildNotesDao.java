@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
-public interface ChildNotesDao {
+import ba.unsa.etf.rpr.domain.ChildNotes;
+
+public interface ChildNotesDao extends Dao<ChildNotes> {
 }

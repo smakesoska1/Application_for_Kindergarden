@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
-public interface TeacherDao {
+import ba.unsa.etf.rpr.domain.Teacher;
+
+public interface TeacherDao extends Dao<Teacher> {
 }

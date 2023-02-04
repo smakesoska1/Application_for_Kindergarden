@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
-public interface ParentDao {
+import ba.unsa.etf.rpr.domain.Parent;
+
+public interface ParentDao extends Dao<Parent> {
 }
