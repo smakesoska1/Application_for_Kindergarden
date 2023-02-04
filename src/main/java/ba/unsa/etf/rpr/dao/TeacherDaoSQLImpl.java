@@ -14,6 +14,7 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao{
     public TeacherDaoSQLImpl() {
         try {
             this.conn= DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_RPRbaza2", "freedb_sara123", "2AP?Su3RJ2zstx?");
+            System.out.println("Ima konekcije");
         } catch (SQLException e) {
             System.out.println("Greska u radu sa bazom podataka");
             System.out.println(e.getMessage());

@@ -1,5 +1,8 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.dao.TeacherDaoSQLImpl;
+import ba.unsa.etf.rpr.domain.Teacher;
+
 /**
  * Hello world!
  *

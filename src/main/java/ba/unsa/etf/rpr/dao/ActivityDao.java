@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
-public interface ActivityDao extends Dao<ActivityDao> {
+import ba.unsa.etf.rpr.domain.Activity;
+
+public interface ActivityDao extends Dao<Activity> {
 }

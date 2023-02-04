@@ -1,8 +1,8 @@
 package ba.unsa.etf.rpr.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import ba.unsa.etf.rpr.domain.Activity;
+
+import java.sql.*;
 import java.util.List;
 
 public class ActivityDaoSQLImpl implements ActivityDao{
@@ -18,17 +18,34 @@ public class ActivityDaoSQLImpl implements ActivityDao{
         }
     }
     @Override
-    public ActivityDao getById(int id) {
+    public Activity getById(int id) {
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM categories WHERE id = ?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()){
+                Activity activity = new Activity();
+                activity.setId(rs.getInt("id_activity"));
+                activity.setActivityName(rs.getString("activity_name")); //ovo samo kad se doda implementacija i toga ce raditi....
+                rs.close();
+                return activity;
+            }else{
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
     @Override
-    public ActivityDao add(ActivityDao item) {
+    public Activity add(Activity item) {
         return null;
     }
 
     @Override
-    public ActivityDao update(ActivityDao item) {
+    public Activity update(Activity item) {
         return null;
     }
 
@@ -38,7 +55,7 @@ public class ActivityDaoSQLImpl implements ActivityDao{
     }
 
     @Override
-    public List<ActivityDao> getAll() {
+    public List<Activity> getAll() {
         return null;
     }
 }
