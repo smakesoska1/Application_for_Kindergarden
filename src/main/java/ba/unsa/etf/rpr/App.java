@@ -1,9 +1,6 @@
 package ba.unsa.etf.rpr;
 
-import ba.unsa.etf.rpr.dao.ActivityDaoSQLImpl;
-import ba.unsa.etf.rpr.dao.ChildNotesDaoSQLImpl;
-import ba.unsa.etf.rpr.dao.DirectorDaoSQLImpl;
-import ba.unsa.etf.rpr.dao.TeacherDaoSQLImpl;
+import ba.unsa.etf.rpr.dao.*;
 import ba.unsa.etf.rpr.domain.*;
 
 /**
@@ -38,7 +35,7 @@ public class App
         note.setNoteName("Nema volje za ucenjem");
         cn.add(note);*/
 
-        DirectorDaoSQLImpl d=new DirectorDaoSQLImpl();
+        /*DirectorDaoSQLImpl d=new DirectorDaoSQLImpl();
         Director director=new Director();
 
         director.setFirstName("Nidal");
@@ -49,6 +46,13 @@ public class App
         director.setPhoneNumber(5230267);
         director.setId(1);
 
-        d.update(director);
+        d.update(director);*/
+
+        ParentDaoSQLImpl par=new ParentDaoSQLImpl();
+        Parent p=par.getById(2);
+        System.out.println(p);
+
+
+
     }
 }

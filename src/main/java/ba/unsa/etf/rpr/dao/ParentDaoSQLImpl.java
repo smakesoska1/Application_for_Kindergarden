@@ -48,8 +48,43 @@ public class ParentDaoSQLImpl implements ParentDao,PersonDao{
     }
 
 
+    private int getMaxId(){
+        int id_parent=0;
+        try {
+            PreparedStatement statement = this.conn.prepareStatement("SELECT MAX(id_parent) FROM parent");
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()) {
+                id_parent = rs.getInt(1);
+                rs.close();
+                return id_parent;
+            }
+        } catch (SQLException e) {
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
+        return id_parent;
+    }
+
+
     @Override
     public Parent add(Parent item) {
+        int id_parent=getMaxId()+1;
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO parent (id_parent,parent_name,parent_surname,parent_adress,parent_username,parent_password,parent_phone) VALUES (?,?,?,?,?,?,?)");
+            stmt.setInt(1,id_parent);
+            stmt.setString(2, item.getFirstName());
+            stmt.setString(3, item.getSurname());
+            stmt.setString(4, item.getAdress());
+            stmt.setString(5, item.getUsername());
+            stmt.setString(6, item.getPassword());
+            stmt.setInt(7,item.getPhoneNumber());
+            stmt.executeUpdate();
+            item.setId(id_parent);
+            return item;
+        } catch (SQLException e) {
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
