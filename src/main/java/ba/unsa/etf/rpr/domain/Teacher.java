@@ -39,4 +39,14 @@ public class Teacher extends Person{
     public void setEndWork(LocalTime endWork) {
         this.endWork = endWork;
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", startWork=" + startWork +
+                ", endWork=" + endWork +
+                '}';
+    }
 }

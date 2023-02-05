@@ -54,6 +54,10 @@ public class App
 
         System.out.println(par.getAll().size());
 
+        TeacherDao dao=new TeacherDaoSQLImpl();
+        Teacher t=dao.getById(1);
+        System.out.println(t);
+
 
 
     }
