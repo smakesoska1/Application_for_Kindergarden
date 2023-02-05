@@ -1,10 +1,10 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.domain.Activity;
+import ba.unsa.etf.rpr.domain.Child;
 import ba.unsa.etf.rpr.domain.ChildNotes;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class ChildNotesDaoSQLImpl implements ChildNotesDao{
@@ -22,6 +22,23 @@ public class ChildNotesDaoSQLImpl implements ChildNotesDao{
 
     @Override
     public ChildNotes getById(int id) {
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM child_notes WHERE id_note = ?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()){
+                ChildNotes note = new ChildNotes();
+                note.setId(rs.getInt("id_note"));
+                note.setNoteName(rs.getString("note_name"));
+                rs.close();
+                return note;
+            }else{
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
