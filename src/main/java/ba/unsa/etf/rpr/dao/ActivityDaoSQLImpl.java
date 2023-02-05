@@ -76,6 +76,16 @@ public class ActivityDaoSQLImpl implements ActivityDao{
 
     @Override
     public Activity update(Activity item) {
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("UPDATE activity SET activity_name=? WHERE id_activity=?");
+            stmt.setString(1, item.getActivityName());
+            stmt.setInt(2, item.getId());
+            stmt.executeUpdate();
+            return item;
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 

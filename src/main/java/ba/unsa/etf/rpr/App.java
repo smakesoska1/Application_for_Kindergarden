@@ -21,5 +21,12 @@ public class App
         Activity b=new Activity();
         b.setActivityName("pjevanje");
         a.add(b);
+
+        Activity c=new Activity();
+        c.setActivityName("brojanje");
+        c.setId(1);
+        a.update(c);
+
+
     }
 }
