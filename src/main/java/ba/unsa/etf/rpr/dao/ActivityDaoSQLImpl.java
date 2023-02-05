@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Activity;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityDaoSQLImpl implements ActivityDao{
@@ -103,6 +104,22 @@ public class ActivityDaoSQLImpl implements ActivityDao{
 
     @Override
     public List<Activity> getAll() {
-        return null;
+        List<Activity> activities = new ArrayList<>();
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM activity");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                Activity activity = new Activity();
+                activity.setId(rs.getInt("id_activity"));
+                activity.setActivityName(rs.getString("activity_name"));
+                activities.add(activity);
+            }
+            rs.close();
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
+        return activities;
+
     }
 }

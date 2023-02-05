@@ -27,7 +27,9 @@ public class App
         c.setId(1);
         a.update(c);*/
 
-       a.delete(6);
+       //a.delete(6);
+        System.out.println(a.getAll().size());
+
 
 
 
