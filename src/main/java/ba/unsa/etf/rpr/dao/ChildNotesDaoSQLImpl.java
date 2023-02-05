@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.domain.Child;
 import ba.unsa.etf.rpr.domain.ChildNotes;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChildNotesDaoSQLImpl implements ChildNotesDao{
@@ -95,11 +96,33 @@ public class ChildNotesDaoSQLImpl implements ChildNotesDao{
 
     @Override
     public void delete(int id) {
-
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM child_notes WHERE id_note = ?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
     public List<ChildNotes> getAll() {
-        return null;
+        List<ChildNotes> notes = new ArrayList<>();
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM child_notes");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                ChildNotes note = new ChildNotes();
+                note.setId(rs.getInt("id_note"));
+                note.setNoteName(rs.getString("note_name"));
+                notes.add(note);
+            }
+            rs.close();
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
+        return notes;
     }
 }
