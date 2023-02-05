@@ -1,8 +1,11 @@
 package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.dao.ActivityDaoSQLImpl;
+import ba.unsa.etf.rpr.dao.ChildNotesDaoSQLImpl;
 import ba.unsa.etf.rpr.dao.TeacherDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Activity;
+import ba.unsa.etf.rpr.domain.Child;
+import ba.unsa.etf.rpr.domain.ChildNotes;
 import ba.unsa.etf.rpr.domain.Teacher;
 
 /**
@@ -29,6 +32,14 @@ public class App
 
        //a.delete(6);
         System.out.println(a.getAll().size());
+
+        ChildNotesDaoSQLImpl cn=new ChildNotesDaoSQLImpl();
+        cn.getAll();
+        System.out.println(a.getAll().size());
+        ChildNotes note=new ChildNotes();
+        note.setNoteName("Nema volje za ucenjem");
+        cn.add(note);
+
 
 
 
