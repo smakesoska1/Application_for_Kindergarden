@@ -3,6 +3,8 @@ package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.dao.*;
 import ba.unsa.etf.rpr.domain.*;
 
+import java.time.LocalTime;
+
 /**
  * Hello world!
  *
@@ -48,15 +50,22 @@ public class App
 
         d.update(director);*/
 
-        ParentDaoSQLImpl par=new ParentDaoSQLImpl();
+        /*ParentDaoSQLImpl par=new ParentDaoSQLImpl();
         Parent p=par.getById(2);
         System.out.println(p);
 
-        System.out.println(par.getAll().size());
+        System.out.println(par.getAll().size());*/
 
         TeacherDao dao=new TeacherDaoSQLImpl();
         Teacher t=dao.getById(1);
         System.out.println(t);
+
+        Teacher teacher=new Teacher();
+        teacher.setStartWork(LocalTime.of(7,0));
+        teacher.setEndWork(LocalTime.of(20,0));
+        teacher.setId(1);
+        dao.update(teacher);
+
 
 
 
