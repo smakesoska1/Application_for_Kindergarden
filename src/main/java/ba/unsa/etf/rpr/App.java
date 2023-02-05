@@ -52,6 +52,8 @@ public class App
         Parent p=par.getById(2);
         System.out.println(p);
 
+        System.out.println(par.getAll().size());
+
 
 
     }
