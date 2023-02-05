@@ -90,6 +90,17 @@ public class ParentDaoSQLImpl implements ParentDao,PersonDao{
 
     @Override
     public Parent update(Parent item) {
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("UPDATE parent SET parent_adress=?,parent_phone=? WHERE id_parent=?");
+            stmt.setString(1, item.getAdress());
+            stmt.setInt(2, item.getPhoneNumber());
+            stmt.setInt(3,item.getId());
+            stmt.executeUpdate();
+            return item;
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
