@@ -6,6 +6,7 @@ import ba.unsa.etf.rpr.domain.Teacher;
 
 import java.sql.*;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherDaoSQLImpl implements TeacherDao,PersonDao{
@@ -112,11 +113,42 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao{
 
     @Override
     public void delete(int id) {
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM teacher WHERE id_teacher = ?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
 
     }
 
     @Override
     public List<Teacher> getAll() {
-        return null;
+
+
+        List<Teacher> teachers = new ArrayList<>();
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM teacher");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                Teacher teacher = new Teacher();
+                teacher.setId(rs.getInt("id_teacher"));
+                teacher.setFirstName(rs.getString("teacher_name"));
+                teacher.setSurname(rs.getString("teacher_surname"));
+                teacher.setAdress(rs.getString("teacher_adress"));
+                teacher.setUsername(rs.getString("teacher_username"));
+                teacher.setPassword(rs.getString("teacher_password"));
+                teacher.setStartWork(LocalTime.parse(rs.getString("start_work")));
+                teacher.setEndWork(LocalTime.parse(rs.getString("end_work")));
+                teachers.add(teacher);
+            }
+            rs.close();
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
+        return teachers;
     }
 }
