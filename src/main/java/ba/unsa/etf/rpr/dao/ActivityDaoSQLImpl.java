@@ -26,7 +26,7 @@ public class ActivityDaoSQLImpl implements ActivityDao{
             if (rs.next()){
                 Activity activity = new Activity();
                 activity.setId(rs.getInt("id_activity"));
-                activity.setActivityName(rs.getString("activity_name")); //ovo samo kad se doda implementacija i toga ce raditi....
+                activity.setActivityName(rs.getString("activity_name"));
                 rs.close();
                 return activity;
             }else{
@@ -91,7 +91,14 @@ public class ActivityDaoSQLImpl implements ActivityDao{
 
     @Override
     public void delete(int id) {
-
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM activity WHERE id_activity = ?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

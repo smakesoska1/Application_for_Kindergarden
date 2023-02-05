@@ -18,14 +18,17 @@ public class App
         Activity ac=a.getById(1);
         System.out.println(ac);
 
-        Activity b=new Activity();
+        /*Activity b=new Activity();
         b.setActivityName("pjevanje");
-        a.add(b);
+        a.add(b);*/
 
-        Activity c=new Activity();
+       /* Activity c=new Activity();
         c.setActivityName("brojanje");
         c.setId(1);
-        a.update(c);
+        a.update(c);*/
+
+       a.delete(6);
+
 
 
     }
