@@ -58,4 +58,16 @@ public class Child extends Person{
     public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
+
+    @Override
+    public String toString() {
+        return "Child{" +
+                "parent=" + parent +
+                ", teacher=" + teacher +
+                ", activity=" + activity +
+                ", childNotes=" + childNotes +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                '}';
+    }
 }

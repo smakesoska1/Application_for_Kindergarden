@@ -22,13 +22,7 @@ public class ChildNotes implements Idable{
         this.noteName = noteName;
     }
 
-    @Override
-    public String toString() {
-        return "ChildNotes{" +
-                "id=" + id +
-                ", noteName='" + noteName + '\'' +
-                '}';
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -43,5 +37,13 @@ public class ChildNotes implements Idable{
     @Override
     public int hashCode() {
         return Objects.hash(id,noteName);
+    }
+
+    @Override
+    public String toString() {
+        return "ChildNotes{" +
+                "id=" + id +
+                ", noteName='" + noteName + '\'' +
+                '}';
     }
 }
