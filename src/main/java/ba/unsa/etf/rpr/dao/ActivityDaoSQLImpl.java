@@ -39,8 +39,38 @@ public class ActivityDaoSQLImpl implements ActivityDao{
         return null;
     }
 
+    private int getMaxId(){
+        int id_activity=0;
+        try {
+            PreparedStatement statement = this.conn.prepareStatement("SELECT MAX(id_activity) FROM activity");
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()) {
+                id_activity = rs.getInt(1);
+                rs.close();
+                return id_activity;
+            }
+        } catch (SQLException e) {
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
+        return id_activity;
+    }
+
+
     @Override
     public Activity add(Activity item) {
+        int id_activity=getMaxId()+1;
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO activity (id_activity,activity_name) VALUES (?,?)");
+            stmt.setInt(1,id_activity);
+            stmt.setString(2, item.getActivityName());
+            stmt.executeUpdate();
+            item.setId(id_activity);
+            return item;
+        } catch (SQLException e) {
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 

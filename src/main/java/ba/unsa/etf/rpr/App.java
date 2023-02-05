@@ -18,5 +18,8 @@ public class App
         Activity ac=a.getById(1);
         System.out.println(ac);
 
+        Activity b=new Activity();
+        b.setActivityName("pjevanje");
+        a.add(b);
     }
 }
