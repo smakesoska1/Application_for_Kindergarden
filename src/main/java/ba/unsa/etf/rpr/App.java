@@ -2,11 +2,9 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.dao.ActivityDaoSQLImpl;
 import ba.unsa.etf.rpr.dao.ChildNotesDaoSQLImpl;
+import ba.unsa.etf.rpr.dao.DirectorDaoSQLImpl;
 import ba.unsa.etf.rpr.dao.TeacherDaoSQLImpl;
-import ba.unsa.etf.rpr.domain.Activity;
-import ba.unsa.etf.rpr.domain.Child;
-import ba.unsa.etf.rpr.domain.ChildNotes;
-import ba.unsa.etf.rpr.domain.Teacher;
+import ba.unsa.etf.rpr.domain.*;
 
 /**
  * Hello world!
@@ -33,16 +31,24 @@ public class App
        //a.delete(6);
         System.out.println(a.getAll().size());
 
-        ChildNotesDaoSQLImpl cn=new ChildNotesDaoSQLImpl();
+       /* ChildNotesDaoSQLImpl cn=new ChildNotesDaoSQLImpl();
         cn.getAll();
         System.out.println(a.getAll().size());
         ChildNotes note=new ChildNotes();
         note.setNoteName("Nema volje za ucenjem");
-        cn.add(note);
+        cn.add(note);*/
 
+        DirectorDaoSQLImpl d=new DirectorDaoSQLImpl();
+        Director director=new Director();
 
+        director.setFirstName("Nidal");
+        director.setSurname("Lalic");
+        director.setAdress("Maglajska");
+        director.setUsername("nlalic1");
+        director.setPassword("nlalic1");
+        director.setPhoneNumber(5230267);
+        director.setId(1);
 
-
-
+        d.update(director);
     }
 }
