@@ -106,7 +106,14 @@ public class ParentDaoSQLImpl implements ParentDao,PersonDao{
 
     @Override
     public void delete(int id) {
-
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM parent WHERE id_parent = ?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
