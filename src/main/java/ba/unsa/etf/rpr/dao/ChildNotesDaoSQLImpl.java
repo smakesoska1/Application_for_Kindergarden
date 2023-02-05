@@ -79,8 +79,19 @@ public class ChildNotesDaoSQLImpl implements ChildNotesDao{
 
     @Override
     public ChildNotes update(ChildNotes item) {
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("UPDATE child_notes SET note_name=? WHERE id_note=?");
+            stmt.setString(1, item.getNoteName());
+            stmt.setInt(2, item.getId());
+            stmt.executeUpdate();
+            return item;
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
+
 
     @Override
     public void delete(int id) {
