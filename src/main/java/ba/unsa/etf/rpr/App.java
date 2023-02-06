@@ -72,9 +72,14 @@ public class App
         teacher.setId(1);
         dao.update(teacher);*/
 
-        ChildDao dao=new ChildDaoSQLImpl();
+        /*ChildDao dao=new ChildDaoSQLImpl();
         Child c=dao.getById(1);
-        System.out.println(c);
+        System.out.println(c);*/
+
+        TeacherDao dao=new TeacherDaoSQLImpl();
+        Teacher t=dao.searchTeacherByUsername("teacher1");
+        System.out.println(t);
+
 
     }
 }
