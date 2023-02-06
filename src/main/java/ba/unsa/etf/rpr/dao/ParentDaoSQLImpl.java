@@ -7,18 +7,21 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParentDaoSQLImpl implements ParentDao,PersonDao{
+public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao{
 
     private Connection conn;
 
-    public ParentDaoSQLImpl() {
+   /* public ParentDaoSQLImpl() {
         try {
             this.conn= DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_RPRbaza2", "freedb_sara123", "2AP?Su3RJ2zstx?");
         } catch (SQLException e) {
             System.out.println("Greska u radu sa bazom podataka");
             System.out.println(e.getMessage());
         }
-    }
+    }*/
+   public ParentDaoSQLImpl() {
+       super("parent");
+   }
 
     @Override
     public Parent getById(int id) {
@@ -145,7 +148,7 @@ public class ParentDaoSQLImpl implements ParentDao,PersonDao{
     @Override
     public Parent searchParentByUsername(String username) {
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM parent WHERE parent_username=?");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM parent WHERE parent_username=?");
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
