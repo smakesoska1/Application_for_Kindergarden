@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.domain.Director;
 import ba.unsa.etf.rpr.domain.Parent;
 
 import java.sql.*;
@@ -143,6 +144,26 @@ public class ParentDaoSQLImpl implements ParentDao,PersonDao{
 
     @Override
     public Parent searchParentByUsername(String username) {
-
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM parent WHERE parent_username=?");
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Parent parent = new Parent();
+                parent.setId(rs.getInt("id_parent"));
+                parent.setFirstName(rs.getString("parent_name"));
+                parent.setSurname(rs.getString("parent_surname"));
+                parent.setAdress(rs.getString("parent_adress"));
+                parent.setUsername(rs.getString("parent_username"));
+                parent.setPassword(rs.getString("parent_password"));
+                parent.setPhoneNumber(rs.getInt("parent_phone"));
+                rs.close();
+                return parent;
+            }
+        }catch (SQLException e) {
+            System.out.println("Nema tog username");
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }
