@@ -84,8 +84,8 @@ public class App
         Director d=dao1.searchDirectorByUsername("nlalic1");
         System.out.println(d);
 
-
-
-
+        ParentDao dao2=new ParentDaoSQLImpl();
+        Parent p=dao2.searchParentByUsername("ahalic");
+        System.out.println(p);
     }
 }
