@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.dao.*;
 import ba.unsa.etf.rpr.domain.*;
+import ba.unsa.etf.rpr.exceptions.PersonException;
 
 import java.time.LocalTime;
 
@@ -56,18 +57,24 @@ public class App
 
         System.out.println(par.getAll().size());*/
 
-        TeacherDao dao=new TeacherDaoSQLImpl();
-        Teacher t=dao.getById(1);
-        System.out.println(t);
+       /* TeacherDao dao=new TeacherDaoSQLImpl();
+        Teacher t= null;
+        try {
+            t = dao.getById(1);
+        } catch (PersonException e) {
+            e.printStackTrace();
+        }
+        System.out.println(t);*/
 
-        Teacher teacher=new Teacher();
+       /* Teacher teacher=new Teacher();
         teacher.setStartWork(LocalTime.of(7,0));
         teacher.setEndWork(LocalTime.of(20,0));
         teacher.setId(1);
-        dao.update(teacher);
+        dao.update(teacher);*/
 
-
-
+        ChildDao dao=new ChildDaoSQLImpl();
+        Child c=dao.getById(1);
+        System.out.println(c);
 
     }
 }

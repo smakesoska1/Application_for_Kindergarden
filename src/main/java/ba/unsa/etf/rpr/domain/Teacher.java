@@ -40,13 +40,4 @@ public class Teacher extends Person{
         this.endWork = endWork;
     }
 
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", startWork=" + startWork +
-                ", endWork=" + endWork +
-                '}';
-    }
 }

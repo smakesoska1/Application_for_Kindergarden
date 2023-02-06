@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Parent;
 import ba.unsa.etf.rpr.domain.Teacher;
+import ba.unsa.etf.rpr.exceptions.PersonException;
 
 
 import java.sql.*;
@@ -25,7 +26,7 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao{
 
 
     @Override
-    public Teacher getById(int id) {
+    public Teacher getById(int id){
 
         try {
             PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM teacher WHERE id_teacher = ?");
