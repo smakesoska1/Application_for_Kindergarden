@@ -61,4 +61,9 @@ public class DirectorDaoSQLImpl implements DirectorDao,PersonDao {
     public List<Director> getAll() {
         return null;
     }
+
+    @Override
+    public Director searchDirectorByUsername(String username) {
+        return null;
+    }
 }

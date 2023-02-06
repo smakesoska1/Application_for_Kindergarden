@@ -152,4 +152,9 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao{
         }
         return teachers;
     }
+
+    @Override
+    public Teacher searchTeacherByUsername(String username) {
+        return null;
+    }
 }

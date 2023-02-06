@@ -140,4 +140,9 @@ public class ParentDaoSQLImpl implements ParentDao,PersonDao{
         }
         return parents;
     }
+
+    @Override
+    public Parent searchParentByUsername(String username) {
+        return null;
+    }
 }
