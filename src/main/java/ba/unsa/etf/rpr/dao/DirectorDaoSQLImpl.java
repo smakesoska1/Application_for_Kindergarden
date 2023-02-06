@@ -2,11 +2,10 @@ package ba.unsa.etf.rpr.dao;
 
 
 import ba.unsa.etf.rpr.domain.Director;
+import ba.unsa.etf.rpr.domain.Teacher;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalTime;
 import java.util.List;
 
 public class DirectorDaoSQLImpl implements DirectorDao,PersonDao {
@@ -64,6 +63,28 @@ public class DirectorDaoSQLImpl implements DirectorDao,PersonDao {
 
     @Override
     public Director searchDirectorByUsername(String username) {
-        return null;
-    }
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM director WHERE director_username=?");
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Director director = new Director();
+                director.setId(rs.getInt("id_director"));
+                director.setFirstName(rs.getString("director_name"));
+                director.setSurname(rs.getString("director_surname"));
+                director.setAdress(rs.getString("director_adress"));
+                director.setUsername(rs.getString("director_username"));
+                director.setPassword(rs.getString("director_password"));
+                director.setPhoneNumber(rs.getInt("director_phone"));
+                rs.close();
+                return director;
+                    }
+                }catch (SQLException e) {
+                    System.out.println("Nema tog username");
+                    System.out.println(e.getMessage());
+                }
+                return null;
+            }
+
+
 }

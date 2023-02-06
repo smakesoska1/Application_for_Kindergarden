@@ -80,6 +80,12 @@ public class App
         Teacher t=dao.searchTeacherByUsername("teacher1");
         System.out.println(t);
 
+        DirectorDao dao1=new DirectorDaoSQLImpl();
+        Director d=dao1.searchDirectorByUsername("nlalic1");
+        System.out.println(d);
+
+
+
 
     }
 }

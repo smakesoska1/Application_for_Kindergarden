@@ -143,6 +143,6 @@ public class ParentDaoSQLImpl implements ParentDao,PersonDao{
 
     @Override
     public Parent searchParentByUsername(String username) {
-        return null;
+
     }
 }
