@@ -6,6 +6,7 @@ import ba.unsa.etf.rpr.domain.Parent;
 
 import java.sql.*;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChildDaoSQLImpl implements ChildDao{
@@ -113,6 +114,30 @@ public class ChildDaoSQLImpl implements ChildDao{
 
     @Override
     public List<Child> getAll() {
-        return null;
+        List<Child> children = new ArrayList<>();
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM child");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                Child child = new Child();
+                child.setId(rs.getInt("id_child"));
+                child.setFirstName(rs.getString("child_name"));
+                child.setSurname(rs.getString("child_surname"));
+                child.setAdress(rs.getString("child_adress"));
+                child.setParent(new ParentDaoSQLImpl().getById(rs.getInt("parent_id")));
+                child.setTeacher(new TeacherDaoSQLImpl().getById(rs.getInt("teacher_id")));
+                child.setStartTime(LocalTime.parse(rs.getString("start_time")));
+                child.setEndTime(LocalTime.parse(rs.getString("end_time")));
+                child.setActivity(new ActivityDaoSQLImpl().getById(rs.getInt("activity_id")));
+                child.setChildNotes(new ChildNotesDaoSQLImpl().getById(rs.getInt("child_notes_id")));
+                children.add(child);
+            }
+            rs.close();
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
+        return children;
     }
-}
+    }
+
