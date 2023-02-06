@@ -97,6 +97,17 @@ public class ChildDaoSQLImpl implements ChildDao{
 
     @Override
     public Child update(Child item) {
+        try{
+        PreparedStatement stmt = this.conn.prepareStatement("UPDATE child SET activity_id=?, child_notes_id=? WHERE id_child=?");
+        stmt.setInt(1, item.getActivity().getId());
+        stmt.setInt(2,item.getChildNotes().getId());
+        stmt.setInt(3, item.getId());
+        stmt.executeUpdate();
+        return item;
+    }catch (SQLException e){
+        System.out.println("Problem pri radu sa bazom podataka");
+        System.out.println(e.getMessage());
+    }
         return null;
     }
 
