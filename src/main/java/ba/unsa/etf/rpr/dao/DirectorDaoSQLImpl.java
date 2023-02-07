@@ -8,18 +8,15 @@ import java.sql.*;
 import java.time.LocalTime;
 import java.util.List;
 
-public class DirectorDaoSQLImpl implements DirectorDao,PersonDao {
+public class DirectorDaoSQLImpl extends AbstractDao implements DirectorDao,PersonDao {
 
     private Connection conn;
 
     public DirectorDaoSQLImpl() {
-        try {
-            this.conn= DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_RPRbaza2", "freedb_sara123", "2AP?Su3RJ2zstx?");
-        } catch (SQLException e) {
-            System.out.println("Greska u radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
+        super("director");
     }
+
+
     @Override
     public Director getById(int id) {
         return null;
@@ -33,7 +30,7 @@ public class DirectorDaoSQLImpl implements DirectorDao,PersonDao {
     @Override
     public Director update(Director item) {
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("UPDATE director SET director_name=?,director_surname=?," +
+            PreparedStatement stmt = getConnection().prepareStatement("UPDATE director SET director_name=?,director_surname=?," +
                     "director_adress=?,director_username=?,director_password=?,director_phone=? WHERE id_director=?");
             stmt.setString(1, item.getFirstName());
             stmt.setString(2,item.getSurname());
@@ -64,7 +61,7 @@ public class DirectorDaoSQLImpl implements DirectorDao,PersonDao {
     @Override
     public Director searchDirectorByUsername(String username) {
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM director WHERE director_username=?");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM director WHERE director_username=?");
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
