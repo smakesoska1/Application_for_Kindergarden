@@ -77,7 +77,7 @@ public class App
         Child c=dao.getById(1);
         System.out.println(c);*/
 
-        /*TeacherDao dao=new TeacherDaoSQLImpl();
+        TeacherDao dao=new TeacherDaoSQLImpl();
         Teacher t=dao.searchTeacherByUsername("teacher1");
         System.out.println(t);
 
@@ -87,11 +87,11 @@ public class App
 
         ParentDao dao2=new ParentDaoSQLImpl();
         Parent p=dao2.searchParentByUsername("ahalic");
-        System.out.println(p);*/
+        System.out.println(p);
 
         ArrayList<Child> children;
-        ChildDao dao=new ChildDaoSQLImpl();
-        children=dao.searchChildrenOfParent(2);
+        ChildDao dao3=new ChildDaoSQLImpl();
+        children=dao3.searchChildrenOfParent(2);
 
         for(int i=0;i<children.size();i++){
             System.out.println(children.get(i));

@@ -176,7 +176,29 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
 
     @Override
     public ArrayList<Child> searchChildrenOfTeacher(int teacherid) {
-        return null;
+        ArrayList<Child> children=new ArrayList<>();
+        try {
+            PreparedStatement stmt= getConnection().prepareStatement("SELECT * FROM child WHERE teacher_id = ?");
+            stmt.setInt(1,teacherid);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                Child child=new Child();
+                child.setId(rs.getInt("id_child"));
+                child.setFirstName(rs.getString("child_name"));
+                child.setSurname(rs.getString("child_surname"));
+                child.setAdress(rs.getString("child_adress"));
+                child.setParent(new ParentDaoSQLImpl().getById(rs.getInt("parent_id")));
+                child.setTeacher(new TeacherDaoSQLImpl().getById(rs.getInt("teacher_id")));
+                child.setStartTime(LocalTime.parse(rs.getString("start_time")));
+                child.setEndTime(LocalTime.parse(rs.getString("end_time")));
+                child.setActivity(new ActivityDaoSQLImpl().getById(rs.getInt("activity_id")));
+                child.setChildNotes(new ChildNotesDaoSQLImpl().getById(rs.getInt("child_notes_id")));
+                children.add(child);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return children;
     }
 }
 
