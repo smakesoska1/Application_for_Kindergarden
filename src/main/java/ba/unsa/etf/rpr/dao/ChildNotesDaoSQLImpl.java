@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Activity;
 import ba.unsa.etf.rpr.domain.Child;
 import ba.unsa.etf.rpr.domain.ChildNotes;
+import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
 
 
     @Override
-    public ChildNotes getById(int id) {
+    public ChildNotes getById(int id) throws KindergardenException {
         try {
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM child_notes WHERE id_note = ?");
             stmt.setInt(1, id);
@@ -34,12 +35,11 @@ public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
             }
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
-        return null;
     }
 
-    private int getMaxId(){
+    private int getMaxId() throws KindergardenException{
         int id_note=0;
         try {
             PreparedStatement statement = getConnection().prepareStatement("SELECT MAX(id_note) FROM child_notes");
@@ -50,15 +50,14 @@ public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
                 return id_note;
             }
         } catch (SQLException e) {
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
         return id_note;
     }
 
 
     @Override
-    public ChildNotes add(ChildNotes item) {
+    public ChildNotes add(ChildNotes item) throws KindergardenException {
         int id_note=getMaxId()+1;
         try {
             PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO child_notes (id_note,note_name) VALUES (?,?)");
@@ -69,13 +68,12 @@ public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
             return item;
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
-        return null;
     }
 
     @Override
-    public ChildNotes update(ChildNotes item) {
+    public ChildNotes update(ChildNotes item) throws KindergardenException {
         try{
             PreparedStatement stmt = getConnection().prepareStatement("UPDATE child_notes SET note_name=? WHERE id_note=?");
             stmt.setString(1, item.getNoteName());
@@ -84,26 +82,25 @@ public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
             return item;
         }catch (SQLException e){
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
-        return null;
     }
 
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws KindergardenException {
         try{
             PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM child_notes WHERE id_note = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
     }
 
     @Override
-    public List<ChildNotes> getAll() {
+    public List<ChildNotes> getAll() throws KindergardenException {
         List<ChildNotes> notes = new ArrayList<>();
         try{
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM child_notes");
@@ -116,8 +113,7 @@ public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
             }
             rs.close();
         }catch (SQLException e){
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+         throw new KindergardenException(e.getMessage(),e);
         }
         return notes;
     }
