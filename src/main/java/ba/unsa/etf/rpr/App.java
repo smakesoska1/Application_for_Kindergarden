@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.domain.*;
 import ba.unsa.etf.rpr.exceptions.PersonException;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 /**
  * Hello world!
@@ -14,10 +15,10 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        /*System.out.println( "Hello World!" );
         ActivityDaoSQLImpl a=new ActivityDaoSQLImpl();
         Activity ac=a.getById(1);
-        System.out.println(ac);
+        System.out.println(ac);*/
 
         /*Activity b=new Activity();
         b.setActivityName("pjevanje");
@@ -29,7 +30,7 @@ public class App
         a.update(c);*/
 
        //a.delete(6);
-        System.out.println(a.getAll().size());
+        //System.out.println(a.getAll().size());
 
        /* ChildNotesDaoSQLImpl cn=new ChildNotesDaoSQLImpl();
         cn.getAll();
@@ -76,7 +77,7 @@ public class App
         Child c=dao.getById(1);
         System.out.println(c);*/
 
-        TeacherDao dao=new TeacherDaoSQLImpl();
+        /*TeacherDao dao=new TeacherDaoSQLImpl();
         Teacher t=dao.searchTeacherByUsername("teacher1");
         System.out.println(t);
 
@@ -86,6 +87,15 @@ public class App
 
         ParentDao dao2=new ParentDaoSQLImpl();
         Parent p=dao2.searchParentByUsername("ahalic");
-        System.out.println(p);
+        System.out.println(p);*/
+
+        ArrayList<Child> children;
+        ChildDao dao=new ChildDaoSQLImpl();
+        children=dao.searchChildrenOfParent(2);
+
+        for(int i=0;i<children.size();i++){
+            System.out.println(children.get(i));
+        }
+
     }
 }

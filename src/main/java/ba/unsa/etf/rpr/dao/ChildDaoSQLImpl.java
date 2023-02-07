@@ -9,18 +9,22 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChildDaoSQLImpl implements ChildDao{
+public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
 
     private Connection conn;
 
     public ChildDaoSQLImpl() {
+        super("child");
+    }
+
+    /*public ChildDaoSQLImpl() {
         try {
             this.conn= DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_RPRbaza2", "freedb_sara123", "2AP?Su3RJ2zstx?");
         } catch (SQLException e) {
             System.out.println("Greska u radu sa bazom podataka");
             System.out.println(e.getMessage());
         }
-    }
+    }*/
 
     @Override
     public Child getById(int id){
@@ -150,5 +154,38 @@ public class ChildDaoSQLImpl implements ChildDao{
         }
         return children;
     }
+
+    @Override
+    public ArrayList<Child> searchChildrenOfParent(int parentid) {
+        ArrayList<Child> children=new ArrayList<>();
+        try {
+            PreparedStatement stmt= getConnection().prepareStatement("SELECT * FROM child WHERE parent_id = ?");
+            stmt.setInt(1,parentid);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                Child child=new Child();
+                child.setId(rs.getInt("id_child"));
+                child.setFirstName(rs.getString("child_name"));
+                child.setSurname(rs.getString("child_surname"));
+                child.setAdress(rs.getString("child_adress"));
+                child.setParent(new ParentDaoSQLImpl().getById(rs.getInt("parent_id")));
+                child.setTeacher(new TeacherDaoSQLImpl().getById(rs.getInt("teacher_id")));
+                child.setStartTime(LocalTime.parse(rs.getString("start_time")));
+                child.setEndTime(LocalTime.parse(rs.getString("end_time")));
+                child.setActivity(new ActivityDaoSQLImpl().getById(rs.getInt("activity_id")));
+                child.setChildNotes(new ChildNotesDaoSQLImpl().getById(rs.getInt("child_notes_id")));
+                children.add(child);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return children;
     }
+
+    @Override
+    public ArrayList<Child> searchChildrenOfTeacher(int teacherid) {
+        return null;
+    }
+}
 

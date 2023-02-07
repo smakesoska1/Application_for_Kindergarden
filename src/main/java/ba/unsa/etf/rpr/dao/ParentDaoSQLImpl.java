@@ -27,7 +27,7 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
     public Parent getById(int id) {
 
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM parent WHERE id_parent = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM parent WHERE id_parent = ?");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){

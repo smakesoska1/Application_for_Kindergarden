@@ -52,7 +52,7 @@ public class Person implements Idable{
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "{" +
                 "firstName='" + firstName + '\'' +
                 ", surname='" + surname + '\'' +
                 '}';
