@@ -1,4 +1,4 @@
-#                                                        Kindergarden management
+#                                                        Kindergarten management
 
 ![readme](/src/main/resources/img/readme.png)
 
