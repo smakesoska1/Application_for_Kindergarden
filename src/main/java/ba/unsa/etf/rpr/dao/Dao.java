@@ -1,7 +1,5 @@
 package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.exceptions.PersonException;
-
 import java.util.List;
 
 public interface Dao<T>{

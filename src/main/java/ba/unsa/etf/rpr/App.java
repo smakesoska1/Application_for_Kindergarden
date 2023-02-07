@@ -2,9 +2,7 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.dao.*;
 import ba.unsa.etf.rpr.domain.*;
-import ba.unsa.etf.rpr.exceptions.PersonException;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
