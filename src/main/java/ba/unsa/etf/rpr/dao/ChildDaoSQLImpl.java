@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Child;
 import ba.unsa.etf.rpr.domain.Parent;
+import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 
 import java.sql.*;
@@ -18,7 +19,7 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
     }
 
     @Override
-    public Child getById(int id){
+    public Child getById(int id) throws KindergardenException {
         try {
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM child WHERE id_child = ?");
             stmt.setInt(1, id);
@@ -40,14 +41,12 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
                 return null;
             }
         } catch (SQLException e) {
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
-        return null;
     }
 
 
-    private int getMaxId(){
+    private int getMaxId() throws KindergardenException{
         int id_child=0;
         try {
             PreparedStatement statement = getConnection().prepareStatement("SELECT MAX(id_child) FROM child");
@@ -59,14 +58,14 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
             }
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
         return id_child;
     }
 
 
     @Override
-    public Child add(Child item) {
+    public Child add(Child item) throws KindergardenException{
         int id_child=getMaxId()+1;
         try {
             PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO child (id_child,child_name, child_surname, child_adress, parent_id, teacher_id, start_time, end_time, activity_id, child_notes_id) values (?,?,?,?,?,?,?,?,?,?)");
@@ -85,13 +84,12 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
             return item;
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
-        return null;
     }
 
     @Override
-    public Child update(Child item) {
+    public Child update(Child item) throws KindergardenException {
         try{
         PreparedStatement stmt = getConnection().prepareStatement("UPDATE child SET activity_id=?, child_notes_id=? WHERE id_child=?");
         stmt.setInt(1, item.getActivity().getId());
@@ -101,25 +99,24 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
         return item;
     }catch (SQLException e){
         System.out.println("Problem pri radu sa bazom podataka");
-        System.out.println(e.getMessage());
+        throw new KindergardenException(e.getMessage());
     }
-        return null;
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws KindergardenException{
         try{
             PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM child WHERE id = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
     }
 
     @Override
-    public List<Child> getAll() {
+    public List<Child> getAll() throws KindergardenException {
         List<Child> children = new ArrayList<>();
         try{
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM child");
@@ -140,14 +137,13 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
             }
             rs.close();
         }catch (SQLException e){
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+           throw new KindergardenException(e.getMessage());
         }
         return children;
     }
 
     @Override
-    public ArrayList<Child> searchChildrenOfParent(int parentid) {
+    public ArrayList<Child> searchChildrenOfParent(int parentid) throws KindergardenException {
         ArrayList<Child> children=new ArrayList<>();
         try {
             PreparedStatement stmt= getConnection().prepareStatement("SELECT * FROM child WHERE parent_id = ?");
@@ -169,13 +165,13 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+           throw new KindergardenException(e.getMessage(),e);
         }
         return children;
     }
 
     @Override
-    public ArrayList<Child> searchChildrenOfTeacher(int teacherid) {
+    public ArrayList<Child> searchChildrenOfTeacher(int teacherid) throws KindergardenException {
         ArrayList<Child> children=new ArrayList<>();
         try {
             PreparedStatement stmt= getConnection().prepareStatement("SELECT * FROM child WHERE teacher_id = ?");
@@ -196,7 +192,7 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
                 children.add(child);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+           throw new KindergardenException(e.getMessage(),e);
         }
         return children;
     }
