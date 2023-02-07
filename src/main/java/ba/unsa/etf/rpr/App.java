@@ -6,6 +6,7 @@ import ba.unsa.etf.rpr.exceptions.PersonException;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Hello world!
@@ -39,18 +40,16 @@ public class App
         note.setNoteName("Nema volje za ucenjem");
         cn.add(note);*/
 
-        /*DirectorDaoSQLImpl d=new DirectorDaoSQLImpl();
         Director director=new Director();
-
         director.setFirstName("Nidal");
         director.setSurname("Lalic");
         director.setAdress("Maglajska");
         director.setUsername("nlalic1");
-        director.setPassword("nlalic1");
+        director.setPassword("password");
         director.setPhoneNumber(5230267);
         director.setId(1);
 
-        d.update(director);*/
+        DaoFactory.directorDao().update(director);
 
         /*ParentDaoSQLImpl par=new ParentDaoSQLImpl();
         Parent p=par.getById(2);
@@ -96,6 +95,9 @@ public class App
         for(int i=0;i<children.size();i++){
             System.out.println(children.get(i));
         }
+
+        List<Teacher> teachers = DaoFactory.teacherDao().getAll();
+        System.out.println(teachers);
 
     }
 }
