@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Director;
 import ba.unsa.etf.rpr.domain.Teacher;
+import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 import java.sql.*;
 import java.time.LocalTime;
@@ -28,7 +29,7 @@ public class DirectorDaoSQLImpl extends AbstractDao implements DirectorDao,Perso
     }
 
     @Override
-    public Director update(Director item) {
+    public Director update(Director item) throws KindergardenException {
         try{
             PreparedStatement stmt = getConnection().prepareStatement("UPDATE director SET director_name=?,director_surname=?," +
                     "director_adress=?,director_username=?,director_password=?,director_phone=? WHERE id_director=?");
@@ -42,10 +43,8 @@ public class DirectorDaoSQLImpl extends AbstractDao implements DirectorDao,Perso
             stmt.executeUpdate();
             return item;
         }catch (SQLException e){
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+           throw new KindergardenException(e.getMessage(),e);
         }
-        return null;
     }
 
     @Override
@@ -59,7 +58,7 @@ public class DirectorDaoSQLImpl extends AbstractDao implements DirectorDao,Perso
     }
 
     @Override
-    public Director searchDirectorByUsername(String username) {
+    public Director searchDirectorByUsername(String username) throws KindergardenException {
         try {
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM director WHERE director_username=?");
             stmt.setString(1, username);
@@ -77,11 +76,8 @@ public class DirectorDaoSQLImpl extends AbstractDao implements DirectorDao,Perso
                 return director;
                     }
                 }catch (SQLException e) {
-                    System.out.println("Nema tog username");
-                    System.out.println(e.getMessage());
+                    throw new KindergardenException(e.getMessage(),e);
                 }
                 return null;
             }
-
-
 }
