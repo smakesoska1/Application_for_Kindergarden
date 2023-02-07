@@ -1,3 +1,3 @@
-#                                                         Application_for_Kindergarden
+#                                                        Kindergarden management
 
 ![readme](/src/main/resources/img/readme.png)
