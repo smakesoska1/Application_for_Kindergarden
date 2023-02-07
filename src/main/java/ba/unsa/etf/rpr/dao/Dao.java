@@ -1,15 +1,17 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.exceptions.KindergardenException;
+
 import java.util.List;
 
 public interface Dao<T>{
-    T getById(int id);
+    T getById(int id) throws KindergardenException;
 
-    T add(T item);
+    T add(T item) throws KindergardenException;
 
-    T update(T item);
+    T update(T item) throws KindergardenException;
 
-    void delete(int id);
+    void delete(int id) throws KindergardenException;
 
-    List<T> getAll();
+    List<T> getAll() throws KindergardenException;
 }

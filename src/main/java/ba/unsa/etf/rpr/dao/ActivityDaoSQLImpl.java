@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Activity;
+import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
     }
 
     @Override
-    public Activity getById(int id) {
+    public Activity getById(int id) throws KindergardenException {
         try {
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM activity WHERE id_activity = ?");
             stmt.setInt(1, id);
@@ -30,13 +31,11 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
                 return null;
             }
         } catch (SQLException e) {
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(),e);
         }
-        return null;
     }
 
-    private int getMaxId(){
+    private int getMaxId() throws KindergardenException{
         int id_activity=0;
         try {
             PreparedStatement statement = getConnection().prepareStatement("SELECT MAX(id_activity) FROM activity");
@@ -47,15 +46,14 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
                 return id_activity;
             }
         } catch (SQLException e) {
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
         return id_activity;
     }
 
 
     @Override
-    public Activity add(Activity item) {
+    public Activity add(Activity item) throws KindergardenException {
         int id_activity=getMaxId()+1;
         try {
             PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO activity (id_activity,activity_name) VALUES (?,?)");
@@ -65,14 +63,12 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
             item.setId(id_activity);
             return item;
         } catch (SQLException e) {
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
-        return null;
     }
 
     @Override
-    public Activity update(Activity item) {
+    public Activity update(Activity item) throws KindergardenException {
         try{
             PreparedStatement stmt = getConnection().prepareStatement("UPDATE activity SET activity_name=? WHERE id_activity=?");
             stmt.setString(1, item.getActivityName());
@@ -80,26 +76,23 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
             stmt.executeUpdate();
             return item;
         }catch (SQLException e){
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
-        return null;
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws KindergardenException {
         try{
             PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM activity WHERE id_activity = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+           throw new KindergardenException(e.getMessage());
         }
     }
 
     @Override
-    public List<Activity> getAll() {
+    public List<Activity> getAll() throws KindergardenException {
         List<Activity> activities = new ArrayList<>();
         try{
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM activity");
@@ -112,8 +105,7 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
             }
             rs.close();
         }catch (SQLException e){
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
         return activities;
 

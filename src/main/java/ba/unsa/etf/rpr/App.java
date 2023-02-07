@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.dao.*;
 import ba.unsa.etf.rpr.domain.*;
+import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,7 @@ import java.util.List;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) throws Exception {
         /*System.out.println( "Hello World!" );
         ActivityDaoSQLImpl a=new ActivityDaoSQLImpl();
         Activity ac=a.getById(1);
