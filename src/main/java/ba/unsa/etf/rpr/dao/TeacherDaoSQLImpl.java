@@ -8,18 +8,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherDaoSQLImpl implements TeacherDao,PersonDao {
+public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonDao {
 
     private Connection conn;
 
     public TeacherDaoSQLImpl() {
-        try {
-            this.conn = DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_RPRbaza2", "freedb_sara123", "2AP?Su3RJ2zstx?");
-
-        } catch (SQLException e) {
-            System.out.println("Greska u radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
+        super("teacher");
     }
 
 
@@ -27,7 +21,7 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao {
     public Teacher getById(int id) {
 
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM teacher WHERE id_teacher = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM teacher WHERE id_teacher = ?");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -55,7 +49,7 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao {
     private int getMaxId() {
         int id_teacher = 0;
         try {
-            PreparedStatement statement = this.conn.prepareStatement("SELECT MAX(id_teacher) FROM teacher");
+            PreparedStatement statement = getConnection().prepareStatement("SELECT MAX(id_teacher) FROM teacher");
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
                 id_teacher = rs.getInt(1);
@@ -74,7 +68,7 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao {
     public Teacher add(Teacher item) {
         int id_teacher = getMaxId() + 1;
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO teacher (id_teacher,teacher_name,teacher_surname,teacher_adress,teacher_username,teacher_password,start_work,end_work) VALUES (?,?,?,?,?,?,?,?)");
+            PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO teacher (id_teacher,teacher_name,teacher_surname,teacher_adress,teacher_username,teacher_password,start_work,end_work) VALUES (?,?,?,?,?,?,?,?)");
             stmt.setInt(1, id_teacher);
             stmt.setString(2, item.getFirstName());
             stmt.setString(3, item.getSurname());
@@ -97,7 +91,7 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao {
     public Teacher update(Teacher item) {
 
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("UPDATE teacher SET start_work=?,end_work=? WHERE id_teacher=?");
+            PreparedStatement stmt = getConnection().prepareStatement("UPDATE teacher SET start_work=?,end_work=? WHERE id_teacher=?");
             stmt.setString(1, item.getStartWork().toString());
             stmt.setString(2, item.getEndWork().toString());
             stmt.setInt(3, item.getId());
@@ -113,7 +107,7 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao {
     @Override
     public void delete(int id) {
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM teacher WHERE id_teacher = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM teacher WHERE id_teacher = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -129,7 +123,7 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao {
 
         List<Teacher> teachers = new ArrayList<>();
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM teacher");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM teacher");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Teacher teacher = new Teacher();
@@ -154,7 +148,7 @@ public class TeacherDaoSQLImpl implements TeacherDao,PersonDao {
     @Override
     public Teacher searchTeacherByUsername(String username) {
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM teacher WHERE teacher_username=?");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM teacher WHERE teacher_username=?");
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
