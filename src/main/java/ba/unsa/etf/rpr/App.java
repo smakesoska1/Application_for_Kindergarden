@@ -71,7 +71,7 @@ public class App
         dao.update(teacher);*/
 
         ChildDao dao=new ChildDaoSQLImpl();
-        Child c=dao.getById(8);
+        Child c=dao.getById(2);
         System.out.println(c);
 
         /*TeacherDao dao=new TeacherDaoSQLImpl();
