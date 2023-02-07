@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Director;
 import ba.unsa.etf.rpr.domain.Parent;
+import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
    }
 
     @Override
-    public Parent getById(int id) {
+    public Parent getById(int id) throws KindergardenException {
 
         try {
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM parent WHERE id_parent = ?");
@@ -37,14 +38,12 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
                 return null;
             }
         } catch (SQLException e) {
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+         throw new KindergardenException(e.getMessage(),e);
         }
-        return null;
     }
 
 
-    private int getMaxId(){
+    private int getMaxId() throws KindergardenException{
         int id_parent=0;
         try {
             PreparedStatement statement = getConnection().prepareStatement("SELECT MAX(id_parent) FROM parent");
@@ -55,15 +54,14 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
                 return id_parent;
             }
         } catch (SQLException e) {
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(),e);
         }
         return id_parent;
     }
 
 
     @Override
-    public Parent add(Parent item) {
+    public Parent add(Parent item) throws KindergardenException {
         int id_parent=getMaxId()+1;
         try {
             PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO parent (id_parent,parent_name,parent_surname,parent_adress,parent_username,parent_password,parent_phone) VALUES (?,?,?,?,?,?,?)");
@@ -79,13 +77,12 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
             return item;
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(),e);
         }
-        return null;
     }
 
     @Override
-    public Parent update(Parent item) {
+    public Parent update(Parent item) throws KindergardenException {
         try{
             PreparedStatement stmt = getConnection().prepareStatement("UPDATE parent SET parent_adress=?,parent_phone=? WHERE id_parent=?");
             stmt.setString(1, item.getAdress());
@@ -95,25 +92,24 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
             return item;
         }catch (SQLException e){
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+           throw new KindergardenException(e.getMessage(),e);
         }
-        return null;
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws KindergardenException {
         try{
             PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM parent WHERE id_parent = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(),e);
         }
     }
 
     @Override
-    public List<Parent> getAll() {
+    public List<Parent> getAll() throws KindergardenException {
         List<Parent> parents = new ArrayList<>();
         try{
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM parent");
@@ -132,13 +128,13 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
             rs.close();
         }catch (SQLException e){
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(),e);
         }
         return parents;
     }
 
     @Override
-    public Parent searchParentByUsername(String username) {
+    public Parent searchParentByUsername(String username) throws KindergardenException {
         try {
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM parent WHERE parent_username=?");
             stmt.setString(1, username);
@@ -157,7 +153,7 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
             }
         }catch (SQLException e) {
             System.out.println("Nema tog username");
-            System.out.println(e.getMessage());
+           throw new KindergardenException(e.getMessage(),e);
         }
         return null;
     }
