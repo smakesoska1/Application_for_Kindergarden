@@ -17,19 +17,10 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
         super("child");
     }
 
-    /*public ChildDaoSQLImpl() {
-        try {
-            this.conn= DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_RPRbaza2", "freedb_sara123", "2AP?Su3RJ2zstx?");
-        } catch (SQLException e) {
-            System.out.println("Greska u radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
-    }*/
-
     @Override
     public Child getById(int id){
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM child WHERE id_child = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM child WHERE id_child = ?");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){
@@ -59,7 +50,7 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
     private int getMaxId(){
         int id_child=0;
         try {
-            PreparedStatement statement = this.conn.prepareStatement("SELECT MAX(id_child) FROM child");
+            PreparedStatement statement = getConnection().prepareStatement("SELECT MAX(id_child) FROM child");
             ResultSet rs = statement.executeQuery();
             if(rs.next()) {
                 id_child = rs.getInt(1);
@@ -78,7 +69,7 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
     public Child add(Child item) {
         int id_child=getMaxId()+1;
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO child (id_child,child_name, child_surname, child_adress, parent_id, teacher_id, start_time, end_time, activity_id, child_notes_id) values (?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO child (id_child,child_name, child_surname, child_adress, parent_id, teacher_id, start_time, end_time, activity_id, child_notes_id) values (?,?,?,?,?,?,?,?,?,?)");
             stmt.setInt(1,id_child);
             stmt.setString(2, item.getFirstName());
             stmt.setString(3, item.getSurname());
@@ -102,7 +93,7 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
     @Override
     public Child update(Child item) {
         try{
-        PreparedStatement stmt = this.conn.prepareStatement("UPDATE child SET activity_id=?, child_notes_id=? WHERE id_child=?");
+        PreparedStatement stmt = getConnection().prepareStatement("UPDATE child SET activity_id=?, child_notes_id=? WHERE id_child=?");
         stmt.setInt(1, item.getActivity().getId());
         stmt.setInt(2,item.getChildNotes().getId());
         stmt.setInt(3, item.getId());
@@ -118,7 +109,7 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
     @Override
     public void delete(int id) {
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM child WHERE id = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM child WHERE id = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
@@ -131,7 +122,7 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
     public List<Child> getAll() {
         List<Child> children = new ArrayList<>();
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM child");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM child");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 Child child = new Child();
