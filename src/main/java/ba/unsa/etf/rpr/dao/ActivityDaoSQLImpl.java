@@ -6,22 +6,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityDaoSQLImpl implements ActivityDao{
+public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
 
     private Connection conn;
 
     public ActivityDaoSQLImpl() {
-        try {
-            this.conn= DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_RPRbaza2", "freedb_sara123", "2AP?Su3RJ2zstx?");
-        } catch (SQLException e) {
-            System.out.println("Greska u radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
+        super("activity");
     }
+
     @Override
     public Activity getById(int id) {
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM activity WHERE id_activity = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM activity WHERE id_activity = ?");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){
@@ -43,7 +39,7 @@ public class ActivityDaoSQLImpl implements ActivityDao{
     private int getMaxId(){
         int id_activity=0;
         try {
-            PreparedStatement statement = this.conn.prepareStatement("SELECT MAX(id_activity) FROM activity");
+            PreparedStatement statement = getConnection().prepareStatement("SELECT MAX(id_activity) FROM activity");
             ResultSet rs = statement.executeQuery();
             if(rs.next()) {
                 id_activity = rs.getInt(1);
@@ -62,7 +58,7 @@ public class ActivityDaoSQLImpl implements ActivityDao{
     public Activity add(Activity item) {
         int id_activity=getMaxId()+1;
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO activity (id_activity,activity_name) VALUES (?,?)");
+            PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO activity (id_activity,activity_name) VALUES (?,?)");
             stmt.setInt(1,id_activity);
             stmt.setString(2, item.getActivityName());
             stmt.executeUpdate();
@@ -78,7 +74,7 @@ public class ActivityDaoSQLImpl implements ActivityDao{
     @Override
     public Activity update(Activity item) {
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("UPDATE activity SET activity_name=? WHERE id_activity=?");
+            PreparedStatement stmt = getConnection().prepareStatement("UPDATE activity SET activity_name=? WHERE id_activity=?");
             stmt.setString(1, item.getActivityName());
             stmt.setInt(2, item.getId());
             stmt.executeUpdate();
@@ -93,7 +89,7 @@ public class ActivityDaoSQLImpl implements ActivityDao{
     @Override
     public void delete(int id) {
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM activity WHERE id_activity = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM activity WHERE id_activity = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
@@ -106,7 +102,7 @@ public class ActivityDaoSQLImpl implements ActivityDao{
     public List<Activity> getAll() {
         List<Activity> activities = new ArrayList<>();
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM activity");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM activity");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 Activity activity = new Activity();
