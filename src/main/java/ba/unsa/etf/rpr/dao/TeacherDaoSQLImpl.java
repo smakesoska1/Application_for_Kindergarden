@@ -164,7 +164,8 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
         }catch (SQLException e) {
             System.out.println("Nema tog username");
             throw new KindergardenException(e.getMessage(),e);
+
         }
-        return null;
+    return null;
     }
 }

@@ -70,13 +70,13 @@ public class App
         teacher.setId(1);
         dao.update(teacher);*/
 
-        /*ChildDao dao=new ChildDaoSQLImpl();
-        Child c=dao.getById(1);
-        System.out.println(c);*/
+        ChildDao dao=new ChildDaoSQLImpl();
+        Child c=dao.getById(8);
+        System.out.println(c);
 
-        TeacherDao dao=new TeacherDaoSQLImpl();
-        Teacher t=dao.searchTeacherByUsername("teacher1");
-        System.out.println(t);
+        /*TeacherDao dao=new TeacherDaoSQLImpl();
+        Teacher t=dao.searchTeacherByUsername("teacher2");
+        System.out.println(t);*/
 
         DirectorDao dao1=new DirectorDaoSQLImpl();
         Director d=dao1.searchDirectorByUsername("nlalic1");
@@ -88,7 +88,7 @@ public class App
 
         ArrayList<Child> children;
         ChildDao dao3=new ChildDaoSQLImpl();
-        children=dao3.searchChildrenOfParent(2);
+        children=dao3.searchChildrenOfParent(10);
 
         for(int i=0;i<children.size();i++){
             System.out.println(children.get(i));

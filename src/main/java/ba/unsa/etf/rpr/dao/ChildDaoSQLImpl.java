@@ -41,6 +41,7 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
                 return null;
             }
         } catch (SQLException e) {
+            System.out.println("Kindergarten");
             throw new KindergardenException(e.getMessage());
         }
     }
