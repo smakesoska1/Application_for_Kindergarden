@@ -11,14 +11,6 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
 
     private Connection conn;
 
-   /* public ParentDaoSQLImpl() {
-        try {
-            this.conn= DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_RPRbaza2", "freedb_sara123", "2AP?Su3RJ2zstx?");
-        } catch (SQLException e) {
-            System.out.println("Greska u radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
-    }*/
    public ParentDaoSQLImpl() {
        super("parent");
    }
@@ -55,7 +47,7 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
     private int getMaxId(){
         int id_parent=0;
         try {
-            PreparedStatement statement = this.conn.prepareStatement("SELECT MAX(id_parent) FROM parent");
+            PreparedStatement statement = getConnection().prepareStatement("SELECT MAX(id_parent) FROM parent");
             ResultSet rs = statement.executeQuery();
             if(rs.next()) {
                 id_parent = rs.getInt(1);
@@ -74,7 +66,7 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
     public Parent add(Parent item) {
         int id_parent=getMaxId()+1;
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO parent (id_parent,parent_name,parent_surname,parent_adress,parent_username,parent_password,parent_phone) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO parent (id_parent,parent_name,parent_surname,parent_adress,parent_username,parent_password,parent_phone) VALUES (?,?,?,?,?,?,?)");
             stmt.setInt(1,id_parent);
             stmt.setString(2, item.getFirstName());
             stmt.setString(3, item.getSurname());
@@ -95,7 +87,7 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
     @Override
     public Parent update(Parent item) {
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("UPDATE parent SET parent_adress=?,parent_phone=? WHERE id_parent=?");
+            PreparedStatement stmt = getConnection().prepareStatement("UPDATE parent SET parent_adress=?,parent_phone=? WHERE id_parent=?");
             stmt.setString(1, item.getAdress());
             stmt.setInt(2, item.getPhoneNumber());
             stmt.setInt(3,item.getId());
@@ -111,7 +103,7 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
     @Override
     public void delete(int id) {
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM parent WHERE id_parent = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM parent WHERE id_parent = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
@@ -124,7 +116,7 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
     public List<Parent> getAll() {
         List<Parent> parents = new ArrayList<>();
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM parent");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM parent");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 Parent parent = new Parent();
