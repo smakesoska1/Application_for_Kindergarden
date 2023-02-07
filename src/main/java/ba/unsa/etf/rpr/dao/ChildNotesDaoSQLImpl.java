@@ -8,23 +8,19 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChildNotesDaoSQLImpl implements ChildNotesDao{
+public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
 
     private Connection conn;
 
     public ChildNotesDaoSQLImpl() {
-        try {
-            this.conn= DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_RPRbaza2", "freedb_sara123", "2AP?Su3RJ2zstx?");
-        } catch (SQLException e) {
-            System.out.println("Greska u radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
+        super("child_notes");
     }
+
 
     @Override
     public ChildNotes getById(int id) {
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM child_notes WHERE id_note = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM child_notes WHERE id_note = ?");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){
@@ -46,7 +42,7 @@ public class ChildNotesDaoSQLImpl implements ChildNotesDao{
     private int getMaxId(){
         int id_note=0;
         try {
-            PreparedStatement statement = this.conn.prepareStatement("SELECT MAX(id_note) FROM child_notes");
+            PreparedStatement statement = getConnection().prepareStatement("SELECT MAX(id_note) FROM child_notes");
             ResultSet rs = statement.executeQuery();
             if(rs.next()) {
                 id_note = rs.getInt(1);
@@ -65,7 +61,7 @@ public class ChildNotesDaoSQLImpl implements ChildNotesDao{
     public ChildNotes add(ChildNotes item) {
         int id_note=getMaxId()+1;
         try {
-            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO child_notes (id_note,note_name) VALUES (?,?)");
+            PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO child_notes (id_note,note_name) VALUES (?,?)");
             stmt.setInt(1,id_note);
             stmt.setString(2, item.getNoteName());
             stmt.executeUpdate();
@@ -81,7 +77,7 @@ public class ChildNotesDaoSQLImpl implements ChildNotesDao{
     @Override
     public ChildNotes update(ChildNotes item) {
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("UPDATE child_notes SET note_name=? WHERE id_note=?");
+            PreparedStatement stmt = getConnection().prepareStatement("UPDATE child_notes SET note_name=? WHERE id_note=?");
             stmt.setString(1, item.getNoteName());
             stmt.setInt(2, item.getId());
             stmt.executeUpdate();
@@ -97,7 +93,7 @@ public class ChildNotesDaoSQLImpl implements ChildNotesDao{
     @Override
     public void delete(int id) {
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM child_notes WHERE id_note = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM child_notes WHERE id_note = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
@@ -110,7 +106,7 @@ public class ChildNotesDaoSQLImpl implements ChildNotesDao{
     public List<ChildNotes> getAll() {
         List<ChildNotes> notes = new ArrayList<>();
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM child_notes");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM child_notes");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 ChildNotes note = new ChildNotes();
