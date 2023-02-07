@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Teacher;
+import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 
 import java.sql.*;
@@ -18,7 +19,7 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
 
 
     @Override
-    public Teacher getById(int id) {
+    public Teacher getById(int id) throws KindergardenException {
 
         try {
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM teacher WHERE id_teacher = ?");
@@ -41,12 +42,11 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
             }
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(),e);
         }
-        return null;
     }
 
-    private int getMaxId() {
+    private int getMaxId() throws KindergardenException{
         int id_teacher = 0;
         try {
             PreparedStatement statement = getConnection().prepareStatement("SELECT MAX(id_teacher) FROM teacher");
@@ -58,14 +58,15 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
             }
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(),e);
+
         }
         return id_teacher;
     }
 
 
     @Override
-    public Teacher add(Teacher item) {
+    public Teacher add(Teacher item) throws KindergardenException {
         int id_teacher = getMaxId() + 1;
         try {
             PreparedStatement stmt = getConnection().prepareStatement("INSERT INTO teacher (id_teacher,teacher_name,teacher_surname,teacher_adress,teacher_username,teacher_password,start_work,end_work) VALUES (?,?,?,?,?,?,?,?)");
@@ -82,13 +83,12 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
             return item;
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(), e);
         }
-        return null;
     }
 
     @Override
-    public Teacher update(Teacher item) {
+    public Teacher update(Teacher item) throws KindergardenException {
 
         try {
             PreparedStatement stmt = getConnection().prepareStatement("UPDATE teacher SET start_work=?,end_work=? WHERE id_teacher=?");
@@ -99,27 +99,24 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
             return item;
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(),e);
         }
-        return null;
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws KindergardenException {
         try {
             PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM teacher WHERE id_teacher = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(),e);
         }
-
     }
 
     @Override
-    public List<Teacher> getAll() {
-
+    public List<Teacher> getAll() throws KindergardenException {
 
         List<Teacher> teachers = new ArrayList<>();
         try {
@@ -140,13 +137,13 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
             rs.close();
         } catch (SQLException e) {
             System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage());
         }
         return teachers;
     }
 
     @Override
-    public Teacher searchTeacherByUsername(String username) {
+    public Teacher searchTeacherByUsername(String username) throws KindergardenException {
         try {
             PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM teacher WHERE teacher_username=?");
             stmt.setString(1, username);
@@ -166,7 +163,7 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
             }
         }catch (SQLException e) {
             System.out.println("Nema tog username");
-            System.out.println(e.getMessage());
+            throw new KindergardenException(e.getMessage(),e);
         }
         return null;
     }
