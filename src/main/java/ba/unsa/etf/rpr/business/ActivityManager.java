@@ -12,7 +12,15 @@ public class ActivityManager {
     }
 
     public void delete(int id) throws KindergardenException{
-        DaoFactory.activityDao().delete(id);
+        try{
+            DaoFactory.activityDao().delete(id);
+        }catch (KindergardenException e){
+            if (e.getMessage().contains("FOREIGN KEY")){
+                throw new KindergardenException("Cannot delete activity which is related to child. First delete/update related child before deleting activity.");
+            }
+            throw e;
+        }
+
     }
 
     public Activity getById(int activityId) throws KindergardenException{
