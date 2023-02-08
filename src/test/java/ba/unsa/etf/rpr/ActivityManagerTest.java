@@ -4,10 +4,8 @@ import ba.unsa.etf.rpr.dao.ActivityDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Activity;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import java.sql.SQLClientInfoException;
 import java.util.ArrayList;
 import java.util.List;
 

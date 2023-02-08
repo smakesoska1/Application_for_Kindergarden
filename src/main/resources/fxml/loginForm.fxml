@@ -17,7 +17,7 @@
       <RowConstraints maxHeight="81.60000000000002" minHeight="59.60000000000002" prefHeight="63.60000000000002" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </GridPane.margin>
@@ -33,8 +33,8 @@
          </padding></TextField>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
         <buttons>
-          <Button defaultButton="true" mnemonicParsing="false" text="Log in" />
-            <Button fx:id="cancelButtonId" cancelButton="true" mnemonicParsing="false" onAction="#nekaAkcija" text="Cancel" />
+          <Button fx:id="login" defaultButton="true" mnemonicParsing="false" onAction="#actionLogin" text="Log in" />
+            <Button fx:id="cancelButtonId" cancelButton="true" mnemonicParsing="false" text="Cancel" />
         </buttons>
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
