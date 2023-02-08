@@ -64,8 +64,8 @@ public class LoginController {
         javafx.scene.Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/directorScreen.fxml"));
-            //DirectorHomeController directorHomeController = new DirectorHomeController();
-            //loader.setController(directorHomeController);
+            DirectorScreenController directorHomeController = new DirectorScreenController();
+            loader.setController(directorHomeController);
             root = loader.load();
             stage.setTitle("Director's home");
             stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
