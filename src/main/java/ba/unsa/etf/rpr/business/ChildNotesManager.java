@@ -14,7 +14,14 @@ public class ChildNotesManager {
         }
 
         public void delete(int id) throws KindergardenException{
-            DaoFactory.childNotesDao().delete(id);
+            try{
+                DaoFactory.childNotesDao().delete(id);
+            }catch (KindergardenException e) {
+                if (e.getMessage().contains("FOREIGN KEY")) {
+                    throw new KindergardenException("Cannot delete note which is related to child. First delete/update related child before deleting note.");
+                }
+                throw e;
+            }
         }
 
         public ChildNotes getById(int childNotesId) throws KindergardenException{
