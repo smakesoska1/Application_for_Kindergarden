@@ -20,7 +20,14 @@ public class ParentManager {
     }
 
     public void delete(int id) throws KindergardenException{
-        DaoFactory.parentDao().delete(id);
+        try{
+            DaoFactory.parentDao().delete(id);
+        }catch (KindergardenException e){
+            if (e.getMessage().contains("FOREIGN KEY")){
+                throw new KindergardenException("Cannot delete parent which is related to child. First delete related child before deleting parent.");
+            }
+            throw e;
+        }
     }
 
     public Parent getById(int parentId) throws KindergardenException{
