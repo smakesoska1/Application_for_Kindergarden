@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.business.ActivityManager;
 import ba.unsa.etf.rpr.business.ChildManager;
 import ba.unsa.etf.rpr.business.DirectorManager;
 import ba.unsa.etf.rpr.business.TeacherManager;
@@ -109,5 +110,10 @@ public class App
 
         ChildManager cn = new ChildManager();
         cn.searchChildrenOfParent(2).stream().forEach(System.out::println);
+
+        ActivityManager ac=new ActivityManager();
+        Activity a=ac.getById(1);
+        System.out.println(a);
+
     }
 }
