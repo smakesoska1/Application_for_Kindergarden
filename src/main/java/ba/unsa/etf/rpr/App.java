@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.business.ChildManager;
 import ba.unsa.etf.rpr.business.DirectorManager;
 import ba.unsa.etf.rpr.business.TeacherManager;
 import ba.unsa.etf.rpr.dao.*;
@@ -106,5 +107,7 @@ public class App
         /*DirectorManager b=new DirectorManager();
         b.searchDirectorByUsername(" ");*/
 
+        ChildManager cn = new ChildManager();
+        cn.searchChildrenOfParent(2).stream().forEach(System.out::println);
     }
 }
