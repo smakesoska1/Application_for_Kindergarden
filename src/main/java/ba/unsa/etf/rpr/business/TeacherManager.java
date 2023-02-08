@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Parent;
+import ba.unsa.etf.rpr.domain.Teacher;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 import java.util.List;
@@ -14,25 +15,32 @@ public class TeacherManager {
         }
     }
 
-    public List<Parent> getAll() throws KindergardenException {
-        return DaoFactory.parentDao().getAll();
+    public List<Teacher> getAll() throws KindergardenException {
+        return DaoFactory.teacherDao().getAll();
     }
 
     public void delete(int id) throws KindergardenException{
-        DaoFactory.parentDao().delete(id);
+        try{
+            DaoFactory.teacherDao().delete(id);
+        }catch (KindergardenException e){
+            if (e.getMessage().contains("FOREIGN KEY")){
+                throw new KindergardenException("Cannot delete teacher which is related to child. First delete/update related child before deleting teacher.");
+            }
+            throw e;
+        }
     }
 
-    public Parent getById(int parentId) throws KindergardenException{
-        return DaoFactory.parentDao().getById(parentId);
+    public Teacher getById(int teacherId) throws KindergardenException{
+        return DaoFactory.teacherDao().getById(teacherId);
     }
 
-    public void update(Parent p) throws KindergardenException{
-        validateUsername(p.getUsername());
-        DaoFactory.parentDao().update(p);
+    public void update(Teacher t) throws KindergardenException{
+        validateUsername(t.getUsername());
+        DaoFactory.teacherDao().update(t);
     }
 
-    public Parent add(Parent p) throws KindergardenException{
-        validateUsername(p.getUsername());
-        return DaoFactory.parentDao().add(p);
+    public Teacher add(Teacher t) throws KindergardenException{
+        validateUsername(t.getUsername());
+        return DaoFactory.teacherDao().add(t);
     }
 }
