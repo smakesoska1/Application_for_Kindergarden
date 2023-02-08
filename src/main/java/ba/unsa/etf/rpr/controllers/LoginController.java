@@ -26,6 +26,7 @@ public class LoginController {
     public TextField usernameid;
     public Button cancelButtonId;
     public PasswordField passwordField;
+    public Button cancelBtn;
     DirectorManager directorm=new DirectorManager();
     TeacherManager teacherm=new TeacherManager();
 
@@ -53,10 +54,14 @@ public class LoginController {
             openDirectorHomeScene();
             usernameid.getScene().getWindow().hide();
         } else if (whoWantsToLogin instanceof Teacher) {
-           // openTeacherHomeScene((Teacher) whoWantsToLogin);
+            openTeacherHomeScene();
+            usernameid.getScene().getWindow().hide();
         } else {
 
         }
+    }
+
+    private void openTeacherHomeScene() {
     }
 
     private void openDirectorHomeScene() {
@@ -86,4 +91,8 @@ public class LoginController {
         alert.showAndWait();
     }
 
+    public void closeLogin(ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelBtn.getScene().getWindow();
+        stage.close();
+    }
 }
