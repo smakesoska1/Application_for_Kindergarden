@@ -10,8 +10,8 @@ import java.util.List;
 public class TeacherManager {
 
     public void validateUsername(String username) throws KindergardenException {
-        if (username == null || username.length() > 45 || username.length() < 2){
-            throw new KindergardenException("Username must be between 2 and 45 chars");
+        if (username == null || username.length() > 45 || username.length() < 4){
+            throw new KindergardenException("Username must be between 4 and 45 chars");
         }
     }
 

@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.business.DirectorManager;
+import ba.unsa.etf.rpr.business.TeacherManager;
 import ba.unsa.etf.rpr.dao.*;
 import ba.unsa.etf.rpr.domain.*;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
@@ -78,7 +80,7 @@ public class App
         Teacher t=dao.searchTeacherByUsername("teacher2");
         System.out.println(t);*/
 
-        DirectorDao dao1=new DirectorDaoSQLImpl();
+        /*DirectorDao dao1=new DirectorDaoSQLImpl();
         Director d=dao1.searchDirectorByUsername("nlalic1");
         System.out.println(d);
 
@@ -95,7 +97,14 @@ public class App
         }
 
         List<Teacher> teachers = DaoFactory.teacherDao().getAll();
-        System.out.println(teachers);
+        System.out.println(teachers);*/
+
+        TeacherManager m=new TeacherManager();
+        List<Teacher> lista=m.getAll();
+        System.out.println(lista);
+
+        /*DirectorManager b=new DirectorManager();
+        b.searchDirectorByUsername(" ");*/
 
     }
 }
