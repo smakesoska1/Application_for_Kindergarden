@@ -43,4 +43,9 @@ public class TeacherManager {
         validateUsername(t.getUsername());
         return DaoFactory.teacherDao().add(t);
     }
+
+    public Teacher searchTeacherByUsername(String username) throws KindergardenException{
+        validateUsername(username);
+        return DaoFactory.teacherDao().searchTeacherByUsername(username);
+    }
 }

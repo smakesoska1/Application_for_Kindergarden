@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.ChildNotes;
 import ba.unsa.etf.rpr.domain.Parent;
+import ba.unsa.etf.rpr.domain.Teacher;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 import java.util.List;
@@ -42,5 +43,8 @@ public class ParentManager {
     public Parent add(Parent p) throws KindergardenException{
         validateUsername(p.getUsername());
         return DaoFactory.parentDao().add(p);
+    }
+    public Parent searchParentByUsername(String username) throws KindergardenException{
+        return DaoFactory.parentDao().searchParentByUsername(username);
     }
 }
