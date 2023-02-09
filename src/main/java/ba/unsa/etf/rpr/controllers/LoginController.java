@@ -2,9 +2,7 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.DirectorManager;
 import ba.unsa.etf.rpr.business.TeacherManager;
-import ba.unsa.etf.rpr.dao.DirectorDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Director;
-import ba.unsa.etf.rpr.domain.Parent;
 import ba.unsa.etf.rpr.domain.Person;
 import ba.unsa.etf.rpr.domain.Teacher;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
@@ -15,7 +13,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import ba.unsa.etf.rpr.dao.DirectorDao;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,7 +21,6 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class LoginController {
     public TextField usernameid;
-    public Button cancelButtonId;
     public PasswordField passwordField;
     public Button cancelBtn;
     DirectorManager directorm=new DirectorManager();
