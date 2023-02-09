@@ -46,7 +46,15 @@ public class LoginController {
             if (teacher != null) {
                 if (teacher.getPassword().equals(passwordField.getText())) {
                     whoWantsToLogin = teacher;
+                }else{
+                    showAlertWithHeaderText();
                 }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Login information");
+                alert.setHeaderText("Results:");
+                alert.setContentText("Incorrect username.Please try again. ");
+                alert.showAndWait();
             }
         }
 
@@ -56,12 +64,25 @@ public class LoginController {
         } else if (whoWantsToLogin instanceof Teacher) {
             openTeacherHomeScene();
             usernameid.getScene().getWindow().hide();
-        } else {
-
         }
     }
 
     private void openTeacherHomeScene() {
+        Stage stage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/teacherScreen.fxml"));
+            TeacherScreenController teacherHomeController = new TeacherScreenController();
+            loader.setController(teacherHomeController);
+            root = loader.load();
+            stage.setTitle("Teacher's home");
+            stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
+            stage.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void openDirectorHomeScene() {
