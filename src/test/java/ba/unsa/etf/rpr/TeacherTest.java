@@ -15,4 +15,10 @@ public class TeacherTest {
         Teacher username=manager.searchTeacherByUsername("teacher1");
         Assertions.assertEquals("Amina",username.getFirstName());
     }
+
+    @Test
+    public void searchByUsernameTeacherExceptionTest(){
+        TeacherManager manager=new TeacherManager();
+        Assertions.assertThrows(KindergardenException.class,()->manager.searchTeacherByUsername("ah"));
+    }
 }
