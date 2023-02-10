@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-public class ActivityManagerTest {
+public class ActivityTest {
 
     @Test
     public void testUpdateActivity() throws KindergardenException {
