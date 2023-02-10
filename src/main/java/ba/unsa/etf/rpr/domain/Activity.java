@@ -41,8 +41,7 @@ public class Activity implements Idable{
     @Override
     public String toString() {
         return "Activity{" +
-                "id=" + id +
-                ", activityName='" + activityName + '\'' +
+                "activityName='" + activityName + '\'' +
                 '}';
     }
 }
