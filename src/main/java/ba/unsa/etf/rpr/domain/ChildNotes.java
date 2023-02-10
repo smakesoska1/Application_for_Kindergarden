@@ -42,7 +42,6 @@ public class ChildNotes implements Idable{
     @Override
     public String toString() {
         return "ChildNotes{" +
-                "id=" + id +
                 ", noteName='" + noteName + '\'' +
                 '}';
     }
