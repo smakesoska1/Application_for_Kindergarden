@@ -103,7 +103,7 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
-            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println("Problem pri radu sa bazom podataka.Mora se obrisati prvo dijete.");
             throw new KindergardenException(e.getMessage(),e);
         }
     }

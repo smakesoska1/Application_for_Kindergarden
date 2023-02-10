@@ -43,6 +43,5 @@ public class ChildTest {
 
         children.add(kinder);
         assertEquals(children.toString(),original.toString());
-
     }
 }
