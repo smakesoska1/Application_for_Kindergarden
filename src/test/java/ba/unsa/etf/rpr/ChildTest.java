@@ -96,6 +96,8 @@ public class ChildTest {
 
         children.add(kinder);
 
+        assertEquals(children,original);
+
     }
 
 }
