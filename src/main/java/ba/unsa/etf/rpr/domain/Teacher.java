@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.time.LocalTime;
+import java.util.Objects;
 
 public class Teacher extends Person{
     private String username;
@@ -40,4 +41,22 @@ public class Teacher extends Person{
         this.endWork = endWork;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Teacher teacher = (Teacher) o;
+
+        if (!Objects.equals(username, teacher.username)) return false;
+        if (!Objects.equals(password, teacher.password)) return false;
+        if (!Objects.equals(startWork, teacher.startWork)) return false;
+        return Objects.equals(endWork, teacher.endWork);
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(username,password,startWork,endWork);
+    }
 }

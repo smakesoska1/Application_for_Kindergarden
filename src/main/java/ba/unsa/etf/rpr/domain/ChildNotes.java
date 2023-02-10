@@ -23,15 +23,15 @@ public class ChildNotes implements Idable{
     }
 
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ChildNotes childNotes = (ChildNotes) o;
+        ChildNotes that = (ChildNotes) o;
 
-        return id == childNotes.id;
+        if (id != that.id) return false;
+        return Objects.equals(noteName, that.noteName);
     }
 
     @Override

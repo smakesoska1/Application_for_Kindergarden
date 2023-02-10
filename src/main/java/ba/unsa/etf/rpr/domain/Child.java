@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.time.LocalTime;
+import java.util.Objects;
 
 public class Child extends Person{
 
@@ -59,15 +60,25 @@ public class Child extends Person{
         this.endTime = endTime;
     }
 
+
     @Override
-    public String toString() {
-        return "Child{" +
-                "parent=" + parent +
-                ", teacher=" + teacher +
-                ", activity=" + activity +
-                ", childNotes=" + childNotes +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Child child = (Child) o;
+
+        if (!Objects.equals(parent, child.parent)) return false;
+        if (!Objects.equals(teacher, child.teacher)) return false;
+        if (!Objects.equals(activity, child.activity)) return false;
+        if (!Objects.equals(childNotes, child.childNotes)) return false;
+        if (!Objects.equals(startTime, child.startTime)) return false;
+        return Objects.equals(endTime, child.endTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(parent,teacher,activity,childNotes,startTime,endTime);
     }
 }
