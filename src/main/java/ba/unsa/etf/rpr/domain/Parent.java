@@ -35,13 +35,10 @@ public class Parent extends Person{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
 
         Parent parent = (Parent) o;
 
-        if (phoneNumber != parent.phoneNumber) return false;
-        if (!Objects.equals(username, parent.username)) return false;
-        return Objects.equals(password, parent.password);
+       return parent.getId()==getId();
     }
 
     @Override

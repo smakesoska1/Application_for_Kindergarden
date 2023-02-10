@@ -47,10 +47,7 @@ public class Person implements Idable{
 
         Person person = (Person) o;
 
-        if (id != person.id) return false;
-        if (!Objects.equals(firstName, person.firstName)) return false;
-        if (!Objects.equals(surname, person.surname)) return false;
-        return Objects.equals(adress, person.adress);
+       return person.id==id;
     }
 
     @Override

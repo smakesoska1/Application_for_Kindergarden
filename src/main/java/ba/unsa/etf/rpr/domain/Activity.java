@@ -29,8 +29,7 @@ public class Activity implements Idable{
 
         Activity activity = (Activity) o;
 
-        if (id != activity.id) return false;
-        return Objects.equals(activityName, activity.activityName);
+        return activity.id==id;
     }
 
     @Override

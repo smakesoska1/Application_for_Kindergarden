@@ -30,8 +30,7 @@ public class ChildNotes implements Idable{
 
         ChildNotes that = (ChildNotes) o;
 
-        if (id != that.id) return false;
-        return Objects.equals(noteName, that.noteName);
+        return that.id==id;
     }
 
     @Override

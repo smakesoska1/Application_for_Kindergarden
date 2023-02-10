@@ -45,14 +45,11 @@ public class Teacher extends Person{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+
 
         Teacher teacher = (Teacher) o;
 
-        if (!Objects.equals(username, teacher.username)) return false;
-        if (!Objects.equals(password, teacher.password)) return false;
-        if (!Objects.equals(startWork, teacher.startWork)) return false;
-        return Objects.equals(endWork, teacher.endWork);
+        return teacher.getId()==getId();
     }
 
     @Override

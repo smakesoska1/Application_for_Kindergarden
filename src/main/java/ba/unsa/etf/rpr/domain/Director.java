@@ -35,13 +35,9 @@ public class Director extends Person{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-
         Director director = (Director) o;
+        return director.getId()==getId();
 
-        if (phoneNumber != director.phoneNumber) return false;
-        if (!Objects.equals(username, director.username)) return false;
-        return Objects.equals(password, director.password);
     }
 
     @Override
