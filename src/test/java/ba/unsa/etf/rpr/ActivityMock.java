@@ -25,9 +25,8 @@ public class ActivityMock {
     private List<Activity> activities;
 
     @BeforeEach
-    public void initialization(){
+    public void initialization() throws KindergardenException {
         activityManager=Mockito.mock(ActivityManager.class);
-        activityDao=Mockito.mock(ActivityDaoSQLImpl.class);
         activities=new ArrayList<>();
         Activity activity1=new Activity();
         activity1.setId(1);
@@ -37,15 +36,11 @@ public class ActivityMock {
         activity2.setId(2);
         activity2.setActivityName("Watching TV");
         activities.add(activity2);
+        Mockito.when(activityManager.getAll()).thenReturn(activities);
     }
 
     @Test
     public void testGetAll() throws KindergardenException {
-        MockedStatic<DaoFactory> dao = Mockito.mockStatic(DaoFactory.class);
-        Mockito.when(DaoFactory.activityDao()).thenReturn(activityDao);
-
-        when(activityManager.getAll()).thenReturn(activities);
-
         List<Activity> retrieved = activityManager.getAll();
         assertEquals(activities, retrieved);
     }
