@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.business.ParentManager;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.dao.ParentDao;
+import ba.unsa.etf.rpr.dao.PersonDao;
 import ba.unsa.etf.rpr.domain.Parent;
 import ba.unsa.etf.rpr.domain.Person;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
@@ -26,7 +27,7 @@ public class ParentMock {
 
         Mockito.when(DaoFactory.parentDao().searchParentByUsername("ahalic")).thenReturn(parent);
         Parent returnedParent = DaoFactory.parentDao().searchParentByUsername("ahalic");
-        boolean value = ParentManager.validateParent(returnedParent.getUsername(), returnedParent.getPassword());
+        boolean value = PersonDao.validatePersonUser(returnedParent.getUsername(), returnedParent.getPassword());
 
         assertTrue(value);
         dao.close();
