@@ -16,6 +16,18 @@ public class ParentManager {
         }
     }
 
+    public static boolean validateUser(String correctName, String correctPass) {
+        try {
+            Parent parent= DaoFactory.parentDao().searchParentByUsername(correctName);
+            if(parent.getPassword().equals(correctPass))
+                return true;
+        } catch (KindergardenException e) {
+            System.out.println("Nepostojeci username i password");
+            return false;
+        }
+        return true;
+    }
+
     public List<Parent> getAll() throws KindergardenException {
         return DaoFactory.parentDao().getAll();
     }

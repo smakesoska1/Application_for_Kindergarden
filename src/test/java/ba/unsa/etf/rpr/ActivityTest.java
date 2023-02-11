@@ -18,7 +18,6 @@ public class ActivityTest {
     public void testUpdateActivity() throws KindergardenException {
         ActivityDaoSQLImpl activityDao=new ActivityDaoSQLImpl();
         Activity originalActivity = activityDao.getById(1);
-        String orginal=originalActivity.getActivityName();
 
         Activity updatedActivity = new Activity();
         updatedActivity.setId(1);
@@ -31,7 +30,6 @@ public class ActivityTest {
 
         assertNotNull(originalActivity);
         assertNotNull(retrievedActivity);
-        //assertNotEquals(orginal,newName);
         assertEquals(newName, updateAc);
     }
     @Test
