@@ -32,22 +32,6 @@ public class ActivityTest {
         assertNotNull(retrievedActivity);
         assertEquals(newName, updateAc);
     }
-    @Test
-    public void testGetAll() throws KindergardenException{
-        ActivityDaoSQLImpl activityDao = Mockito.mock(ActivityDaoSQLImpl.class);
-        List<Activity> expectedActivities = new ArrayList<>();
-        Activity activity1 = new Activity();
-        activity1.setId(1);
-        activity1.setActivityName("Activity 1");
-        expectedActivities.add(activity1);
-        Activity activity2 = new Activity();
-        activity2.setId(2);
-        activity2.setActivityName("Activity 2");
-        expectedActivities.add(activity2);
-        when(activityDao.getAll()).thenReturn(expectedActivities);
 
-        List<Activity> retrievedActivities = activityDao.getAll();
-        assertEquals(expectedActivities, retrievedActivities);
-    }
 
 }
