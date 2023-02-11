@@ -27,7 +27,7 @@ public class ParentMock {
 
         Mockito.when(DaoFactory.parentDao().searchParentByUsername("ahalic")).thenReturn(parent);
         Parent returnedParent = DaoFactory.parentDao().searchParentByUsername("ahalic");
-        boolean value = PersonDao.validatePersonUser(returnedParent.getUsername(), returnedParent.getPassword());
+        boolean value = ParentManager.validateParent(returnedParent.getUsername(), returnedParent.getPassword());
 
         assertTrue(value);
         dao.close();

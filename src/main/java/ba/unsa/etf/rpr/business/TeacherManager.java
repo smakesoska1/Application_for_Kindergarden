@@ -15,6 +15,18 @@ public class TeacherManager {
         }
     }
 
+    public static boolean validateTeacher(String correctName, String correctPass) {
+        try {
+            Teacher teacher= DaoFactory.teacherDao().searchTeacherByUsername(correctName);
+            if(teacher.getPassword().equals(correctPass))
+                return true;
+        } catch (KindergardenException e) {
+            System.out.println("Nepostojeci username i password");
+            return false;
+        }
+        return true;
+    }
+
     public List<Teacher> getAll() throws KindergardenException {
         return DaoFactory.teacherDao().getAll();
     }
