@@ -16,7 +16,7 @@ public class ParentManager {
         }
     }
 
-    public static boolean validateUser(String correctName, String correctPass) {
+    public static boolean validateParent(String correctName, String correctPass) {
         try {
             Parent parent= DaoFactory.parentDao().searchParentByUsername(correctName);
             if(parent.getPassword().equals(correctPass))
