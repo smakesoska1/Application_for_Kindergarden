@@ -36,11 +36,11 @@ public class ActivityMock {
         activity2.setId(2);
         activity2.setActivityName("Watching TV");
         activities.add(activity2);
-        Mockito.when(activityManager.getAll()).thenReturn(activities);
     }
 
     @Test
     public void testGetAll() throws KindergardenException {
+        Mockito.when(activityManager.getAll()).thenReturn(activities);
         List<Activity> retrieved = activityManager.getAll();
         assertEquals(activities, retrieved);
     }

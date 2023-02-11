@@ -45,7 +45,6 @@ public class ParentMock {
     @Test
     public void validateIfParentExist() throws KindergardenException {
             MockedStatic<DaoFactory> dao= Mockito.mockStatic(DaoFactory.class);
-            parentDao=Mockito.mock(ParentDaoSQLImpl.class);
             Mockito.when(DaoFactory.parentDao()).thenReturn(parentDao);
 
         Parent parent = new Parent();
