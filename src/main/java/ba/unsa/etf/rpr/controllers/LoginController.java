@@ -35,7 +35,7 @@ public class LoginController {
 
         Director director = directorm.searchDirectorByUsername(usernameid.getText());
         Teacher teacher = teacherm.searchTeacherByUsername(usernameid.getText());
-        Parent parent = parentm.searchParentByUsername(usernameid.getId());
+        Parent parent = parentm.searchParentByUsername(usernameid.getText());
 
         if (director != null) {
             if (director.getPassword().equals(passwordField.getText())) {
