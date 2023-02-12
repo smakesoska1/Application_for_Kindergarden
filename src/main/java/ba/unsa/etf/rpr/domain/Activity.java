@@ -39,8 +39,7 @@ public class Activity implements Idable{
 
     @Override
     public String toString() {
-        return "Activity{" +
-                "activityName='" + activityName + '\'' +
-                '}';
+        return  activityName;
+
     }
 }

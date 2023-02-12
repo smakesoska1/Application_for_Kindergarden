@@ -26,22 +26,22 @@
       <RowConstraints maxHeight="143.79996337890623" minHeight="10.0" prefHeight="67.39998779296877" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ListView prefHeight="134.0" prefWidth="264.0" GridPane.rowIndex="3">
+      <ListView fx:id="childrenList" prefHeight="134.0" prefWidth="264.0" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="10.0" right="10.0" />
          </GridPane.margin>
       </ListView>
-      <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <ListView fx:id="teacherList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin>
       </ListView>
-      <ListView prefHeight="150.0" prefWidth="278.0" GridPane.rowIndex="9">
+      <ListView fx:id="activitiList" prefHeight="150.0" prefWidth="278.0" GridPane.rowIndex="9">
          <GridPane.margin>
             <Insets left="10.0" right="10.0" />
          </GridPane.margin>
       </ListView>
-      <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+      <ListView fx:id="parentList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin>

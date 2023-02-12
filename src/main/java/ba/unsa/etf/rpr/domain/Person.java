@@ -53,9 +53,8 @@ public class Person implements Idable{
     @Override
     public String toString() {
         return "{" +
-                "firstName='" + firstName + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
+                 firstName +" " +
+                  surname + '}';
     }
 
     public int hashCode() {
