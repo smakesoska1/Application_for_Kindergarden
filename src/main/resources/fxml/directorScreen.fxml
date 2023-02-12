@@ -1,31 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <Button alignment="TOP_RIGHT" mnemonicParsing="false" text="Log out" BorderPane.alignment="TOP_RIGHT">
-         <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </BorderPane.margin>
-      </Button>
-   </top>
-   <left>
-      <ListView prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </BorderPane.margin>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="598.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints maxHeight="33.599996948242186" minHeight="10.0" prefHeight="33.599996948242186" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="62.60000839233398" minHeight="10.0" prefHeight="23.400003814697264" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="64.19999923706055" minHeight="10.0" prefHeight="30.200012207031243" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="237.60003967285155" minHeight="10.0" prefHeight="158.79999389648438" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="186.5999816894531" minHeight="8.00000610351563" prefHeight="40.199987792968784" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="186.5999816894531" minHeight="10.0" prefHeight="45.80001220703127" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="186.5999816894531" minHeight="0.0" prefHeight="8.199987792968727" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="186.5999816894531" minHeight="0.0" prefHeight="25.599999999999966" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="186.5999816894531" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="249.80001220703127" minHeight="10.0" prefHeight="153.2" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="94.19998779296873" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="143.79996337890623" minHeight="10.0" prefHeight="44.20001220703125" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="143.79996337890623" minHeight="10.0" prefHeight="67.39998779296877" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <ListView prefHeight="134.0" prefWidth="264.0" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </GridPane.margin>
       </ListView>
-   </left>
-   <center>
-      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
-   <right>
-      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </right>
-   <bottom>
-      <Button mnemonicParsing="false" text="Button" BorderPane.alignment="CENTER" />
-   </bottom>
-</BorderPane>
+      <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </ListView>
+      <ListView prefHeight="150.0" prefWidth="278.0" GridPane.rowIndex="9">
+         <GridPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </GridPane.margin>
+      </ListView>
+      <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </ListView>
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" text="Director's Home Screen" textFill="#3431c9" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button contentDisplay="CENTER" mnemonicParsing="false" text="Log Out" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" text="List of Children" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label text="List of Techers" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label text="List of Activities" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="List of Children's Notes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Add child" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+      <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="138.0" text="Delete child" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Add teacher" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+      <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="138.0" text="Delete teacher" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Add activity" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
+      <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="138.0" text="Delete activity" GridPane.halignment="CENTER" GridPane.rowIndex="12" GridPane.valignment="TOP" />
+      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Add note" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
+      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Delete note" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="12" GridPane.valignment="TOP" />
+   </children>
+</GridPane>

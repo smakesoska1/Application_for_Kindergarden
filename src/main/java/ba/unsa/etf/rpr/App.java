@@ -42,7 +42,7 @@ public class App
         note.setNoteName("Nema volje za ucenjem");
         cn.add(note);*/
 
-        Director director=new Director();
+        /*Director director=new Director();
         director.setFirstName("Nidal");
         director.setSurname("Lalic");
         director.setAdress("Maglajska");
@@ -51,7 +51,7 @@ public class App
         director.setPhoneNumber(5230267);
         director.setId(1);
 
-        DaoFactory.directorDao().update(director);
+        DaoFactory.directorDao().update(director);*/
 
         /*ParentDaoSQLImpl par=new ParentDaoSQLImpl();
         Parent p=par.getById(2);
@@ -74,9 +74,9 @@ public class App
         teacher.setId(1);
         dao.update(teacher);*/
 
-        ChildDao dao=new ChildDaoSQLImpl();
+        /*ChildDao dao=new ChildDaoSQLImpl();
         Child c=dao.getById(2);
-        System.out.println(c);
+        System.out.println(c);*/
 
         /*TeacherDao dao=new TeacherDaoSQLImpl();
         Teacher t=dao.searchTeacherByUsername("teacher2");
@@ -101,19 +101,21 @@ public class App
         List<Teacher> teachers = DaoFactory.teacherDao().getAll();
         System.out.println(teachers);*/
 
-        TeacherManager m=new TeacherManager();
+       /* TeacherManager m=new TeacherManager();
         List<Teacher> lista=m.getAll();
-        System.out.println(lista);
+        System.out.println(lista);*/
 
         /*DirectorManager b=new DirectorManager();
         b.searchDirectorByUsername(" ");*/
 
-        ChildManager cn = new ChildManager();
+        /*ChildManager cn = new ChildManager();
         cn.searchChildrenOfParent(2).stream().forEach(System.out::println);
 
         ActivityManager ac=new ActivityManager();
         Activity a=ac.getById(1);
-        System.out.println(a);
+        System.out.println(a);*/
+
+        System.out.println("Hello");
 
     }
 }
