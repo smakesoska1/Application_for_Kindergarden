@@ -1,8 +1,10 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.DirectorManager;
+import ba.unsa.etf.rpr.business.ParentManager;
 import ba.unsa.etf.rpr.business.TeacherManager;
 import ba.unsa.etf.rpr.domain.Director;
+import ba.unsa.etf.rpr.domain.Parent;
 import ba.unsa.etf.rpr.domain.Person;
 import ba.unsa.etf.rpr.domain.Teacher;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
@@ -25,34 +27,45 @@ public class LoginController {
     public Button cancelBtn;
     DirectorManager directorm=new DirectorManager();
     TeacherManager teacherm=new TeacherManager();
+    ParentManager parentm=new ParentManager();
 
     public void actionLogin(ActionEvent actionEvent) throws KindergardenException {
 
         Person whoWantsToLogin = null;
 
         Director director = directorm.searchDirectorByUsername(usernameid.getText());
+        Teacher teacher = teacherm.searchTeacherByUsername(usernameid.getText());
+        Parent parent = parentm.searchParentByUsername(usernameid.getId());
+
         if (director != null) {
             if (director.getPassword().equals(passwordField.getText())) {
                 whoWantsToLogin = director;
-            }else{
+            } else {
                 showAlertWithHeaderText();
             }
-        } else {
-            Teacher teacher = teacherm.searchTeacherByUsername(usernameid.getText());
-            if (teacher != null) {
+        } else if (teacher != null) {
                 if (teacher.getPassword().equals(passwordField.getText())) {
                     whoWantsToLogin = teacher;
-                }else{
+                } else {
                     showAlertWithHeaderText();
                 }
-            }else{
+            }
+            else if (parent != null) {
+                    if (parent.getPassword().equals(passwordField.getText())) {
+                        whoWantsToLogin = parent;
+                    } else {
+                        showAlertWithHeaderText();
+                    }
+                }
+            else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Login information");
                 alert.setHeaderText("Results:");
                 alert.setContentText("Incorrect username.Please try again. ");
                 alert.showAndWait();
             }
-        }
+
+
 
         if (whoWantsToLogin instanceof Director) {
             openDirectorHomeScene();
@@ -60,7 +73,30 @@ public class LoginController {
         } else if (whoWantsToLogin instanceof Teacher) {
             openTeacherHomeScene();
             usernameid.getScene().getWindow().hide();
+        }else if(whoWantsToLogin instanceof Parent){
+            openParentHomeScene();
+            usernameid.getScene().getWindow().hide();
+
         }
+    }
+
+    private void openParentHomeScene() {
+        Stage stage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/parentScreen.fxml"));
+            ParentScreenController parentHomeController = new ParentScreenController();
+            loader.setController(parentHomeController);
+            root = loader.load();
+            stage.setTitle("Parent's home");
+            stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
+            stage.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void openTeacherHomeScene() {
