@@ -26,7 +26,7 @@
             <Insets top="10.0" />
          </GridPane.margin>
       </Label>
-      <Button contentDisplay="RIGHT" mnemonicParsing="false" text="LogOut" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+      <Button fx:id="logOutBtn" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#close" text="LogOut" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets right="10.0" top="10.0" />
          </GridPane.margin>
@@ -105,6 +105,29 @@
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="childEnd" prefHeight="18.0" prefWidth="112.0" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Label fx:id="childEnd" prefHeight="18.0" prefWidth="112.0" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets bottom="10.0" />
+         </GridPane.margin></Label>
+      <Label fx:id="childActivity2" prefHeight="18.0" prefWidth="158.0" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="childNote2" prefHeight="18.0" prefWidth="158.0" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="childStart1" prefHeight="18.0" prefWidth="112.0" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="childEnd1" prefHeight="18.0" prefWidth="112.0" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="10.0" />
+         </GridPane.margin>
+      </Label>
    </children>
 </GridPane>
