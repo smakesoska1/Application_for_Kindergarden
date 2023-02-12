@@ -74,18 +74,18 @@ public class LoginController {
             openTeacherHomeScene();
             usernameid.getScene().getWindow().hide();
         }else if(whoWantsToLogin instanceof Parent){
-            openParentHomeScene();
+            openParentHomeScene((Parent)whoWantsToLogin);
             usernameid.getScene().getWindow().hide();
 
         }
     }
 
-    private void openParentHomeScene() {
+    private void openParentHomeScene(Parent whoWantsToLogin) {
         Stage stage = new Stage();
         javafx.scene.Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/parentScreen.fxml"));
-            ParentScreenController parentHomeController = new ParentScreenController();
+            ParentScreenController parentHomeController = new ParentScreenController(whoWantsToLogin);
             loader.setController(parentHomeController);
             root = loader.load();
             stage.setTitle("Parent's home");
