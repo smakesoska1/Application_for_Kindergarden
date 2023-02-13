@@ -24,11 +24,11 @@ import java.util.Optional;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
-public class TeacherScreenController {
+public class TeacherScreenController{
     @FXML
     private ListView childrenList;
     @FXML
-    private ListView activityList;
+    public ListView activityList;
     @FXML
     private ListView notesList;
     @FXML
@@ -45,7 +45,6 @@ public class TeacherScreenController {
     private Child selectedChild;
     private Activity selectedActivity;
     private ChildNotes selectedNote;
-
 
     public TeacherScreenController(Teacher whoWantsToLogin) {
         this.teacher=whoWantsToLogin;
@@ -101,6 +100,9 @@ public class TeacherScreenController {
             stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setResizable(false);
             stage.show();
+           stage.setOnHiding(event -> {
+                refreshActivity();
+            });
             stage.toFront();
         } catch (IOException e) {
             e.printStackTrace();
@@ -124,5 +126,13 @@ public class TeacherScreenController {
             e.printStackTrace();
         }
 
+    }
+   public void refreshActivity(){
+        try {
+            activityList.setItems(FXCollections.observableArrayList(managera.getAll()));
+            activityList.refresh();
+        } catch (KindergardenException e) {
+            e.printStackTrace();
+        }
     }
 }

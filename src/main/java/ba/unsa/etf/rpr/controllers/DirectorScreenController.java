@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
@@ -27,7 +28,7 @@ public class DirectorScreenController {
     @FXML
      private ListView teacherList;
     @FXML
-     private ListView activitiList;
+     private ListView activityList;
     @FXML
      private ListView parentList;
     @FXML
@@ -60,10 +61,10 @@ public class DirectorScreenController {
     public void initialize() throws KindergardenException {
         childrenList.setItems(FXCollections.observableArrayList(managerc.getAll()));
         teacherList.setItems(FXCollections.observableArrayList(managert.getAll()));
-        activitiList.setItems(FXCollections.observableArrayList(managera.getAll()));
+        activityList.setItems(FXCollections.observableArrayList(managera.getAll()));
         parentList.setItems(FXCollections.observableArrayList(managerp.getAll()));
 
-        activitiList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        activityList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedActivity = (Activity) newValue;
         });
         parentList.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue )->{
@@ -85,10 +86,10 @@ public class DirectorScreenController {
                 Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete");
                 Optional<ButtonType> result = confirmation.showAndWait();
                 if (!result.get().getButtonData().isCancelButton()) {
-                    selectedActivity = (Activity) activitiList.getSelectionModel().getSelectedItem();
+                    selectedActivity = (Activity) activityList.getSelectionModel().getSelectedItem();
                     if (selectedActivity != null) {
                         managera.delete(selectedActivity.getId());
-                        activitiList.getItems().remove(selectedActivity);
+                        activityList.getItems().remove(selectedActivity);
                     }
                 }
             }catch (KindergardenException e) {
@@ -165,6 +166,5 @@ public class DirectorScreenController {
             e.printStackTrace();
         }
     }
-
     }
 

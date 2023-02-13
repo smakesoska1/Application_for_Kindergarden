@@ -115,12 +115,6 @@ public class App
         Activity a=ac.getById(1);
         System.out.println(a);*/
 
-        Activity activity=new Activity();
-        activity.setActivityName("ucenje njemckog");
-        ActivityManager m=new ActivityManager();
-        m.add(activity);
-
-
        //System.out.println("Hello");
 
     }
