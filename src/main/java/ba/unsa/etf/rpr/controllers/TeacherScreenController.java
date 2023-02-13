@@ -121,6 +121,9 @@ public class TeacherScreenController{
             stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setResizable(false);
             stage.show();
+            stage.setOnHiding(event -> {
+                refreshNotes();
+            });
             stage.toFront();
         } catch (IOException e) {
             e.printStackTrace();
@@ -131,6 +134,15 @@ public class TeacherScreenController{
         try {
             activityList.setItems(FXCollections.observableArrayList(managera.getAll()));
             activityList.refresh();
+        } catch (KindergardenException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void refreshNotes(){
+        try {
+            notesList.setItems(FXCollections.observableArrayList(managercn.getAll()));
+            notesList.refresh();
         } catch (KindergardenException e) {
             e.printStackTrace();
         }
