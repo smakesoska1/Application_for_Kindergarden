@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
+import java.util.Optional;
 
 public class DirectorScreenController {
     @FXML
@@ -60,15 +61,24 @@ public class DirectorScreenController {
 
     @FXML
     public void deleteActivity( ) throws KindergardenException {
-        selectedActivity = (Activity) activitiList.getSelectionModel().getSelectedItem();
-        if (selectedActivity != null) {
-            managera.delete(selectedActivity.getId());
-            activitiList.getItems().remove(selectedActivity);
-        }
+            try {
+                Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete");
+                Optional<ButtonType> result = confirmation.showAndWait();
+                if (!result.get().getButtonData().isCancelButton()) {
+                    selectedActivity = (Activity) activitiList.getSelectionModel().getSelectedItem();
+                    if (selectedActivity != null) {
+                        managera.delete(selectedActivity.getId());
+                        activitiList.getItems().remove(selectedActivity);
+                    }
+                }
+            }catch (KindergardenException e) {
+                new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+            }
     }
 
     @FXML
     public void deleteParent(){
+
 
     }
 }
