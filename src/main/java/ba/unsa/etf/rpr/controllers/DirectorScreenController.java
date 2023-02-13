@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
+
 public class DirectorScreenController {
     @FXML
     private Button logOutBtn;
@@ -29,9 +31,9 @@ public class DirectorScreenController {
 
     private Child selectedChild;
     private Teacher selectedTeacher;
-    private Activity selectedActivity;
     private Parent selectedParent;
     private ChildNotes selectedNotes;
+    private Activity selectedActivity;
 
 
     ChildManager managerc=new ChildManager();
@@ -39,25 +41,6 @@ public class DirectorScreenController {
     ActivityManager managera=new ActivityManager();
     ParentManager managerp=new ParentManager();
 
-    public Child getSelectedChild() {
-        return selectedChild;
-    }
-
-    public Teacher getSelectedTeacher() {
-        return selectedTeacher;
-    }
-
-    public Activity getSelectedActivity() {
-        return selectedActivity;
-    }
-
-    public Parent getSelectedParent() {
-        return selectedParent;
-    }
-
-    public ChildNotes getSelectedNotes() {
-        return selectedNotes;
-    }
 
     public void logOut(){
         Stage stage = (Stage) logOutBtn.getScene().getWindow();
@@ -69,5 +52,23 @@ public class DirectorScreenController {
         teacherList.setItems(FXCollections.observableArrayList(managert.getAll()));
         activitiList.setItems(FXCollections.observableArrayList(managera.getAll()));
         parentList.setItems(FXCollections.observableArrayList(managerp.getAll()));
+
+        activitiList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedActivity = (Activity) newValue;
+        });
+    }
+
+    @FXML
+    public void deleteActivity( ) throws KindergardenException {
+        selectedActivity = (Activity) activitiList.getSelectionModel().getSelectedItem();
+        if (selectedActivity != null) {
+            managera.delete(selectedActivity.getId());
+            activitiList.getItems().remove(selectedActivity);
+        }
+    }
+
+    @FXML
+    public void deleteParent(){
+
     }
 }
