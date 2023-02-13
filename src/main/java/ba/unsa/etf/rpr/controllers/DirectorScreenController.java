@@ -7,11 +7,11 @@ import ba.unsa.etf.rpr.business.TeacherManager;
 import ba.unsa.etf.rpr.domain.*;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.util.Optional;
 
 public class DirectorScreenController {
@@ -29,6 +29,10 @@ public class DirectorScreenController {
       private Button deleteParentBtn;
     @FXML
        private Button deleteActivityBtn;
+    @FXML
+    private Button deleteChildBtn;
+    @FXML
+    private Button deleteTeacherBtn;
 
     private Child selectedChild;
     private Teacher selectedTeacher;
@@ -60,10 +64,14 @@ public class DirectorScreenController {
         parentList.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue )->{
             selectedParent=(Parent) newValue;
         });
+
+        teacherList.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue )->{
+            selectedTeacher=(Teacher) newValue;
+        });
     }
 
     @FXML
-    public void deleteActivity( ) throws KindergardenException {
+    public void deleteActivity(ActionEvent event) throws KindergardenException {
             try {
                 Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete");
                 Optional<ButtonType> result = confirmation.showAndWait();
@@ -80,7 +88,7 @@ public class DirectorScreenController {
     }
 
     @FXML
-    public void deleteParent(){
+    public void deleteParent(ActionEvent event){
         try {
             Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete parent?");
             Optional<ButtonType> result = confirmation.showAndWait();
@@ -96,6 +104,27 @@ public class DirectorScreenController {
         }
     }
 
+    @FXML
+    public void deleteTeacher(ActionEvent event){
+        try {
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete teacher?");
+            Optional<ButtonType> result = confirmation.showAndWait();
+            if (!result.get().getButtonData().isCancelButton()) {
+                selectedTeacher = (Teacher) teacherList.getSelectionModel().getSelectedItem();
+                if (selectedTeacher != null) {
+                    managert.delete(selectedTeacher.getId());
+                    teacherList.getItems().remove(selectedTeacher);
+                }
+            }
+        }catch (KindergardenException e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
+
+    @FXML
+    public void deleteChild(){
+
+    }
 
 
     }
