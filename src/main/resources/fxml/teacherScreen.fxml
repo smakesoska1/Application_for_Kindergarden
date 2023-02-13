@@ -60,7 +60,7 @@
             <Insets top="10.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Remove note" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Button fx:id="removeNote" mnemonicParsing="false" onAction="#removeNote" prefHeight="26.0" prefWidth="112.0" text="Remove note" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets top="10.0" />
          </GridPane.margin>

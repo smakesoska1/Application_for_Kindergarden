@@ -5,15 +5,19 @@ import ba.unsa.etf.rpr.business.ChildManager;
 import ba.unsa.etf.rpr.business.ChildNotesManager;
 import ba.unsa.etf.rpr.domain.Activity;
 import ba.unsa.etf.rpr.domain.Child;
+import ba.unsa.etf.rpr.domain.ChildNotes;
 import ba.unsa.etf.rpr.domain.Teacher;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.Optional;
 
 public class TeacherScreenController {
     @FXML
@@ -24,12 +28,19 @@ public class TeacherScreenController {
     private ListView notesList;
     @FXML
     private Button logOutBtn;
+    @FXML
+    private Button removeNote;
 
 
     private Teacher teacher;
     private ChildManager manager;
     private ActivityManager managera;
     private ChildNotesManager managercn;
+
+    private Child selectedChild;
+    private Activity selectedActivity;
+    private ChildNotes selectedNote;
+
 
     public TeacherScreenController(Teacher whoWantsToLogin) {
         this.teacher=whoWantsToLogin;
@@ -45,10 +56,31 @@ public class TeacherScreenController {
         activityList.setItems(FXCollections.observableArrayList(managera.getAll()));
         notesList.setItems(FXCollections.observableArrayList(managercn.getAll()));
 
+        notesList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedNote = (ChildNotes) newValue;
+        });
+
     }
 
     public void logOut(){
         Stage stage = (Stage) logOutBtn.getScene().getWindow();
         stage.close();
+    }
+
+    public void removeNote(){
+        try {
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete note?");
+            Optional<ButtonType> result = confirmation.showAndWait();
+            if (!result.get().getButtonData().isCancelButton()) {
+                selectedNote = (ChildNotes) notesList.getSelectionModel().getSelectedItem();
+                if (selectedNote != null) {
+                    managercn.delete(selectedNote.getId());
+                    notesList.getItems().remove(selectedNote);
+                }
+            }
+        }catch (KindergardenException e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+
     }
 }
