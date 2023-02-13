@@ -18,7 +18,7 @@
     <RowConstraints maxHeight="358.40000000000003" minHeight="10.0" prefHeight="111.80000000000001" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" text="Log Out" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+      <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#logOut" text="Log Out" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets right="10.0" top="10.0" />
          </GridPane.margin>
