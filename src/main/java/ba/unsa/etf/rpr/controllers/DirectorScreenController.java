@@ -57,6 +57,9 @@ public class DirectorScreenController {
         activitiList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedActivity = (Activity) newValue;
         });
+        parentList.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue )->{
+            selectedParent=(Parent) newValue;
+        });
     }
 
     @FXML
@@ -78,7 +81,22 @@ public class DirectorScreenController {
 
     @FXML
     public void deleteParent(){
+        try {
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete parent?");
+            Optional<ButtonType> result = confirmation.showAndWait();
+            if (!result.get().getButtonData().isCancelButton()) {
+                selectedParent = (Parent) parentList.getSelectionModel().getSelectedItem();
+                if (selectedParent != null) {
+                    managerp.delete(selectedParent.getId());
+                    parentList.getItems().remove(selectedParent);
+                }
+            }
+        }catch (KindergardenException e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
+
 
 
     }
-}
+
