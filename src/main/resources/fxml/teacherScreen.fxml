@@ -54,7 +54,7 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </ListView>
-      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Add activity" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Button fx:id="addActivityBtn" mnemonicParsing="false" onAction="#addActivity" prefHeight="26.0" prefWidth="114.0" text="Add activity" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Add note" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="10.0" />
