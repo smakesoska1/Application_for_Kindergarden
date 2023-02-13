@@ -68,6 +68,10 @@ public class DirectorScreenController {
         teacherList.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue )->{
             selectedTeacher=(Teacher) newValue;
         });
+
+        childrenList.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue )->{
+            selectedChild=(Child) newValue;
+        });
     }
 
     @FXML
@@ -123,6 +127,19 @@ public class DirectorScreenController {
 
     @FXML
     public void deleteChild(){
+        try {
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to child?");
+            Optional<ButtonType> result = confirmation.showAndWait();
+            if (!result.get().getButtonData().isCancelButton()) {
+                selectedChild = (Child) childrenList.getSelectionModel().getSelectedItem();
+                if (selectedChild != null) {
+                    managerc.delete(selectedChild.getId());
+                    childrenList.getItems().remove(selectedChild);
+                }
+            }
+        }catch (KindergardenException e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
 
     }
 
