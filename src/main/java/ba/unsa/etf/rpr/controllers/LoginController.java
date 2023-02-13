@@ -71,7 +71,7 @@ public class LoginController {
             openDirectorHomeScene();
             usernameid.getScene().getWindow().hide();
         } else if (whoWantsToLogin instanceof Teacher) {
-            openTeacherHomeScene();
+            openTeacherHomeScene((Teacher) whoWantsToLogin);
             usernameid.getScene().getWindow().hide();
         }else if(whoWantsToLogin instanceof Parent){
             openParentHomeScene((Parent)whoWantsToLogin);
@@ -99,12 +99,12 @@ public class LoginController {
 
     }
 
-    private void openTeacherHomeScene() {
+    private void openTeacherHomeScene(Teacher whoWantsToLogin) {
         Stage stage = new Stage();
         javafx.scene.Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/teacherScreen.fxml"));
-            TeacherScreenController teacherHomeController = new TeacherScreenController();
+            TeacherScreenController teacherHomeController = new TeacherScreenController(whoWantsToLogin);
             loader.setController(teacherHomeController);
             root = loader.load();
             stage.setTitle("Teacher's home");
