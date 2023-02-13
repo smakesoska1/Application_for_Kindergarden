@@ -106,4 +106,23 @@ public class TeacherScreenController {
             e.printStackTrace();
         }
     }
+
+    public void addNote(){
+        Stage stage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addNote.fxml"));
+            NoteScreenController noteHomeController = new NoteScreenController();
+            loader.setController(noteHomeController);
+            root = loader.load();
+            stage.setTitle("Add note description");
+            stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
+            stage.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
