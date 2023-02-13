@@ -9,10 +9,15 @@ import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
+
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class DirectorScreenController {
     @FXML
@@ -141,6 +146,24 @@ public class DirectorScreenController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
 
+    }
+    @FXML
+    public void addActivity(){
+        Stage stage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addActivity.fxml"));
+            ActivityScreenController activityHomeController = new ActivityScreenController();
+            loader.setController(activityHomeController);
+            root = loader.load();
+            stage.setTitle("Add activity");
+            stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
+            stage.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     }

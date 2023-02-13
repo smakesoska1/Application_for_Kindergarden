@@ -18,10 +18,10 @@ import java.util.List;
 public class App 
 {
     public static void main( String[] args ) throws Exception {
-        System.out.println( "Hello World!" );
+       /* System.out.println( "Hello World!" );
         ActivityDaoSQLImpl a=new ActivityDaoSQLImpl();
         Activity ac=a.getById(1);
-        System.out.println(ac);
+        System.out.println(ac);*/
 
         /*Activity b=new Activity();
         b.setActivityName("pjevanje");
@@ -115,7 +115,13 @@ public class App
         Activity a=ac.getById(1);
         System.out.println(a);*/
 
-        System.out.println("Hello");
+        Activity activity=new Activity();
+        activity.setActivityName("ucenje njemckog");
+        ActivityManager m=new ActivityManager();
+        m.add(activity);
+
+
+       //System.out.println("Hello");
 
     }
 }
