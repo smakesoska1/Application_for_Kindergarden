@@ -42,7 +42,6 @@ public class DirectorScreenController {
     private Child selectedChild;
     private Teacher selectedTeacher;
     private Parent selectedParent;
-    private ChildNotes selectedNotes;
     private Activity selectedActivity;
 
 
@@ -56,6 +55,7 @@ public class DirectorScreenController {
         Stage stage = (Stage) logOutBtn.getScene().getWindow();
         stage.close();
     }
+
     @FXML
     public void initialize() throws KindergardenException {
         childrenList.setItems(FXCollections.observableArrayList(managerc.getAll()));
