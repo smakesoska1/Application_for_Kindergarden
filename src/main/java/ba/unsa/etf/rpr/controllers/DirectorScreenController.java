@@ -160,9 +160,21 @@ public class DirectorScreenController {
             stage.setTitle("Add activity");
             stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setResizable(false);
+            stage.setOnHiding(event -> {
+                refreshActivity();
+            });
             stage.show();
             stage.toFront();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void refreshActivity(){
+        try {
+            activityList.setItems(FXCollections.observableArrayList(managera.getAll()));
+            activityList.refresh();
+        } catch (KindergardenException e) {
             e.printStackTrace();
         }
     }
