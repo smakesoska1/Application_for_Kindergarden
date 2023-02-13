@@ -170,6 +170,25 @@ public class DirectorScreenController {
         }
     }
 
+    @FXML
+    public void addParent(){
+        Stage stage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addParent.fxml"));
+            AddParentScreenController addParentHomeController = new AddParentScreenController();
+            loader.setController(addParentHomeController);
+            root = loader.load();
+            stage.setTitle("Add parent");
+            stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
+            stage.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void refreshActivity(){
         try {
             activityList.setItems(FXCollections.observableArrayList(managera.getAll()));
