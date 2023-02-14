@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.business.ParentManager;
 import ba.unsa.etf.rpr.domain.Parent;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -48,6 +49,13 @@ public class AddParentScreenController {
 
             Stage stage = (Stage) parentName.getScene().getWindow();
             stage.close();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Add information");
+            alert.setHeaderText("Results:");
+            alert.setContentText("Some fields are empty. Please try again.");
+
+            alert.showAndWait();
         }
 
 
