@@ -87,7 +87,7 @@
          </GridPane.margin>
       </TextField>
       <Button mnemonicParsing="false" onAction="#addParent" text="Add parent" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-      <Button mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="71.0" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+      <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="71.0" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin>
