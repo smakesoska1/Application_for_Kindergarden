@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="151.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="274.2" />
@@ -49,15 +53,6 @@
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-         <GridPane.margin>
-            <Insets right="20.0" />
-         </GridPane.margin>
-      </TextField>
       <Label text="Start time:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets right="5.0" top="20.0" />
@@ -68,16 +63,6 @@
             <Insets bottom="10.0" right="10.0" />
          </GridPane.margin>
       </Label>
-      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets top="20.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-         <GridPane.margin>
-            <Insets bottom="5.0" />
-         </GridPane.margin>
-      </TextField>
       <Label text="Current activity:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="10.0" />
@@ -90,7 +75,7 @@
          </GridPane.margin>
       </Label>
       <ChoiceBox prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-      <Button defaultButton="true" mnemonicParsing="false" prefHeight="26.0" prefWidth="85.0" text="Add changes" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+      <Button defaultButton="true" mnemonicParsing="false" onAction="#addChanges" prefHeight="26.0" prefWidth="85.0" text="Add changes" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" />
          </GridPane.margin>
@@ -100,5 +85,26 @@
             <Insets bottom="5.0" right="10.0" />
          </GridPane.margin>
       </Button>
+      <Label GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label prefHeight="18.0" prefWidth="120.0" style="-fx-background-color: #c0c0c0;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label prefHeight="18.0" prefWidth="123.0" style="-fx-background-color: #c0c0c0;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label prefHeight="18.0" prefWidth="120.0" style="-fx-background-color: #c0c0c0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label prefHeight="18.0" prefWidth="125.0" style="-fx-background-color: #c0c0c0;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+      <Label prefHeight="18.0" prefWidth="87.0" style="-fx-background-color: #c0c0c0;" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets top="20.0" />
+         </GridPane.margin>
+      </Label>
+      <Label prefHeight="18.0" prefWidth="87.0" style="-fx-background-color: #c0c0c0;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label prefHeight="18.0" prefWidth="122.0" style="-fx-background-color: #c0c0c0;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets right="20.0" />
+         </GridPane.margin>
+      </Label>
    </children>
 </GridPane>
