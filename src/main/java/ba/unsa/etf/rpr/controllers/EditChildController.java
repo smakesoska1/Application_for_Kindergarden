@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.ActivityManager;
+import ba.unsa.etf.rpr.business.ChildManager;
 import ba.unsa.etf.rpr.business.ChildNotesManager;
 import ba.unsa.etf.rpr.domain.Activity;
 import ba.unsa.etf.rpr.domain.Child;
@@ -40,6 +41,7 @@ public class EditChildController {
 
     private ActivityManager managera=new ActivityManager();
     private ChildNotesManager managercn=new ChildNotesManager();
+    private ChildManager managerc=new ChildManager();
 
 
     public void setChild(Child selectedChild) {
@@ -71,10 +73,14 @@ public class EditChildController {
    }
 
    public void addChanges(){
-
-
+        child.setActivity(activityCheck.getValue());
+        child.setChildNotes(notesCheck.getValue());
+       try {
+           managerc.update(child);
+           Stage stage = (Stage) activityCheck.getScene().getWindow();
+           stage.close();
+       } catch (KindergardenException e) {
+           e.printStackTrace();
+       }
    }
-
-
-
 }
