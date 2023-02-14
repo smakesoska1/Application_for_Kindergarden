@@ -182,6 +182,9 @@ public class DirectorScreenController {
             stage.setTitle("Add parent");
             stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setResizable(false);
+            stage.setOnHiding(event -> {
+                refreshParent();
+            });
             stage.show();
             stage.toFront();
         } catch (IOException e) {
@@ -193,6 +196,15 @@ public class DirectorScreenController {
         try {
             activityList.setItems(FXCollections.observableArrayList(managera.getAll()));
             activityList.refresh();
+        } catch (KindergardenException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void refreshParent(){
+        try {
+            parentList.setItems(FXCollections.observableArrayList(managerp.getAll()));
+            parentList.refresh();
         } catch (KindergardenException e) {
             e.printStackTrace();
         }
