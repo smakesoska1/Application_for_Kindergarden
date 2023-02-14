@@ -8,8 +8,10 @@ import ba.unsa.etf.rpr.domain.ChildNotes;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -33,6 +35,8 @@ public class EditChildController {
     private ChoiceBox<Activity> activityCheck;
     @FXML
     private ChoiceBox<ChildNotes>notesCheck;
+    @FXML
+    private Button closeBtn;
 
     private ActivityManager managera=new ActivityManager();
     private ChildNotesManager managercn=new ChildNotesManager();
@@ -61,10 +65,13 @@ public class EditChildController {
    }
 
    public void close(){
+       Stage stage = (Stage) closeBtn.getScene().getWindow();
+       stage.close();
 
    }
 
    public void addChanges(){
+
 
    }
 
