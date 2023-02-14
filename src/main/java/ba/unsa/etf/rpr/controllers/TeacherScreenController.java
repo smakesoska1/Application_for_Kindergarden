@@ -130,6 +130,25 @@ public class TeacherScreenController{
         }
 
     }
+
+    public void editChild(){
+        Stage stage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editChild.fxml"));
+            EditChildController editChildController = new EditChildController();
+            loader.setController(editChildController);
+            root = loader.load();
+            stage.setTitle("Edit child activity and notes");
+            stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
+            stage.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
    public void refreshActivity(){
         try {
             activityList.setItems(FXCollections.observableArrayList(managera.getAll()));
