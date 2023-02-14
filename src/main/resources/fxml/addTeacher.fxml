@@ -1,14 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fxml.AddTeacher"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="75.4" minHeight="0.0" prefHeight="56.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="160.8" minHeight="10.0" prefHeight="79.6" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="163.59998474121093" minHeight="10.0" prefHeight="88.80000000000001" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="152.39998474121091" minHeight="10.0" prefHeight="88.19999999999999" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="117.39999999999998" minHeight="10.0" prefHeight="79.59999999999997" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label text="Add teacher" textFill="#2019a7" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label text="Techer's name:" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin></Label>
+      <Label text="Teacher's surname:" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin></Label>
+      <Label text="Teacher's addres:" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin></Label>
+      <Label text="Teacher's username:" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin></Label>
+      <Label text="Teacher's password:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label text="Start work time:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label text="End work time:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button maxWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Close" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </Button>
+      <Button maxWidth="-Infinity" mnemonicParsing="false" prefWidth="100.0" text="Add teacher" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </Button>
+      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="50.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="60.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </TextField>
+      <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </ComboBox>
+   </children>
+</GridPane>
