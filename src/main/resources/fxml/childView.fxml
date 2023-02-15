@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -52,47 +49,47 @@
       <Label text="Child's teacher:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Label text="Child's current activity:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <Label text="Child's current note:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Close" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+      <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="74.0" text="Close" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin>
       </Button>
-      <Label prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Label fx:id="childName" prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Label fx:id="childSurname" prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Label fx:id="childAdress" prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Label fx:id="childParent" prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Label fx:id="childPhone" prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="70.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Label fx:id="childTeacher" prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="70.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Label fx:id="childActivity" prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="70.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Label fx:id="childNote" prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="70.0" />
          </GridPane.margin>
@@ -103,12 +100,12 @@
          </GridPane.margin>
       </Label>
       <Label text="Child's end time:" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <Label prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <Label fx:id="childStart" prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="40.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <Label fx:id="childEnd" prefHeight="18.0" prefWidth="124.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="40.0" />
          </GridPane.margin>

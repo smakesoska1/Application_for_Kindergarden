@@ -214,6 +214,21 @@ public class DirectorScreenController {
     }
 
     public void childInfo(){
+        Stage stage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/childView.fxml"));
+            ViewChildScreenController viewChildHomeController = new ViewChildScreenController();
+            loader.setController(viewChildHomeController);
+            root = loader.load();
+            stage.setTitle("View child");
+            stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
+            stage.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
