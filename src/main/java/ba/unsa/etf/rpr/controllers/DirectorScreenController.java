@@ -217,9 +217,11 @@ public class DirectorScreenController {
         Stage stage = new Stage();
         javafx.scene.Parent root = null;
         try {
+            Child selectedChild= (Child) childrenList.getSelectionModel().getSelectedItem();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/childView.fxml"));
             ViewChildScreenController viewChildHomeController = new ViewChildScreenController();
             loader.setController(viewChildHomeController);
+            viewChildHomeController.setChild(selectedChild);
             root = loader.load();
             stage.setTitle("View child");
             stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
