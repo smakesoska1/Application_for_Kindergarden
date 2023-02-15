@@ -192,6 +192,36 @@ public class DirectorScreenController {
         }
     }
 
+    public void addTeacher(){
+        Stage stage = new Stage();
+        javafx.scene.Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addTeacher.fxml"));
+            AddTeacherScreenController addTeacherHomeController = new AddTeacherScreenController();
+            loader.setController(addTeacherHomeController);
+            root = loader.load();
+            stage.setTitle("Add teacher");
+            stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.setOnHiding(event -> {
+                refreshTeacher();
+            });
+            stage.show();
+            stage.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void refreshTeacher() {
+        try {
+            teacherList.setItems(FXCollections.observableArrayList(managert.getAll()));
+            teacherList.refresh();
+        } catch (KindergardenException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void refreshActivity(){
         try {
             activityList.setItems(FXCollections.observableArrayList(managera.getAll()));

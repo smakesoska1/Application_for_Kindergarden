@@ -77,24 +77,24 @@
             <Insets left="40.0" />
          </GridPane.margin>
       </TextField>
-      <RadioButton mnemonicParsing="false" text="08:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <RadioButton fx:id="eightRadio" mnemonicParsing="false" text="08:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="10.0" />
          </GridPane.margin>
       </RadioButton>
-      <RadioButton mnemonicParsing="false" text="09:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <RadioButton mnemonicParsing="false" text="10:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+      <RadioButton fx:id="nineRadio" mnemonicParsing="false" text="09:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <RadioButton fx:id="tenRadio" mnemonicParsing="false" text="10:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin>
       </RadioButton>
-      <RadioButton mnemonicParsing="false" text="16:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <RadioButton fx:id="sixteenRadio" mnemonicParsing="false" text="16:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="10.0" />
          </GridPane.margin>
       </RadioButton>
-      <RadioButton mnemonicParsing="false" text="17:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-      <RadioButton mnemonicParsing="false" text="18:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+      <RadioButton fx:id="seventeenRadio" mnemonicParsing="false" text="17:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+      <RadioButton fx:id="eightteenRadio" mnemonicParsing="false" text="18:00" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin>
