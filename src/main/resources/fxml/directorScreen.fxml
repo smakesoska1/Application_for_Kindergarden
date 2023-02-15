@@ -82,9 +82,9 @@
             <Insets bottom="10.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Add child" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+      <Button mnemonicParsing="false" onAction="#addChild" prefHeight="26.0" prefWidth="138.0" text="Add child" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
       <Button fx:id="deleteChildBtn" mnemonicParsing="false" onAction="#deleteChild" prefHeight="27.0" prefWidth="138.0" text="Delete child" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Add teacher" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+      <Button mnemonicParsing="false" onAction="#addTeacher" prefHeight="26.0" prefWidth="138.0" text="Add teacher" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
       <Button fx:id="deleteTeacherbtn" mnemonicParsing="false" onAction="#deleteTeacher" prefHeight="27.0" prefWidth="138.0" text="Delete teacher" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
       <Button fx:id="addActivityBtn" mnemonicParsing="false" onAction="#addActivity" prefHeight="26.0" prefWidth="138.0" text="Add activity" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
       <Button fx:id="deleteActivityBtn" mnemonicParsing="false" onAction="#deleteActivity" prefHeight="27.0" prefWidth="138.0" text="Delete activity" GridPane.halignment="CENTER" GridPane.rowIndex="12" GridPane.valignment="TOP" />

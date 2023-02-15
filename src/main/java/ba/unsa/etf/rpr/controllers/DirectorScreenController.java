@@ -213,6 +213,14 @@ public class DirectorScreenController {
         }
     }
 
+    public void childInfo(){
+
+    }
+
+    public void addChild(){
+
+    }
+
     private void refreshTeacher() {
         try {
             teacherList.setItems(FXCollections.observableArrayList(managert.getAll()));
