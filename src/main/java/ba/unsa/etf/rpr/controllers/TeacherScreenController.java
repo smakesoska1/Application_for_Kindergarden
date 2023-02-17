@@ -81,11 +81,15 @@ public class TeacherScreenController{
                     managercn.delete(selectedNote.getId());
                     notesList.getItems().remove(selectedNote);
                 }
+                else{
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("You didn't selected any note.");
+                    alert.showAndWait();
+                }
             }
         }catch (KindergardenException e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
-
     }
 
     public void addActivity(){
