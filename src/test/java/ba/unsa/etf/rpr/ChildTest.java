@@ -31,7 +31,7 @@ public class ChildTest {
         ChildNotes cn= DaoFactory.childNotesDao().getById(3);
 
         kinder.setFirstName("Nidal");
-        kinder.setSurname("Halilovic");
+        kinder.setSurname("Halic");
         kinder.setAdress("Geteova");
         kinder.setParent(p);
         kinder.setTeacher(t);
