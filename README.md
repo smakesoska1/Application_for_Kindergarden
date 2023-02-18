@@ -13,3 +13,7 @@ This is simple kindergarten management Maven application that is made with Java 
 - overview of the children of designated parent
 - overview of the children of designated teacher
 - overview of all child's current informations
+
+You can run this app by writing in terminal following commands:
+mvn clean install
+mvn clean javafx:run
