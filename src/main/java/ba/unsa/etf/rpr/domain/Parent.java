@@ -2,6 +2,10 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
+/**
+ * Java Bean for chldren's parents
+ */
+
 public class Parent extends Person{
     private String username;
     private String password;

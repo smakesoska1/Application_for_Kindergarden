@@ -3,6 +3,10 @@ package ba.unsa.etf.rpr.domain;
 import java.time.LocalTime;
 import java.util.Objects;
 
+/**
+ * Java Bean for children in kindergarden
+ */
+
 public class Child extends Person{
 
     private Parent parent;

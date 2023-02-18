@@ -1,6 +1,9 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
+/**
+ * Java Bean for person that can be director,child or teacher. It contains the same attributes for all of 3 users
+ */
 
 public class Person implements Idable{
     private int id;

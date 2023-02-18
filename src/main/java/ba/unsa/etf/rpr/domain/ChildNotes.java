@@ -2,6 +2,10 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
+/**
+ * Java Bean for list of possible children's notes from teacher
+ */
+
 public class ChildNotes implements Idable{
     private int id;
     private String noteName;

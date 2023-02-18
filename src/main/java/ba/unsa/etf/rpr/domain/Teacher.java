@@ -3,6 +3,10 @@ package ba.unsa.etf.rpr.domain;
 import java.time.LocalTime;
 import java.util.Objects;
 
+/**
+ * Java Bean class for child's teacher
+ */
+
 public class Teacher extends Person{
     private String username;
     private String password;

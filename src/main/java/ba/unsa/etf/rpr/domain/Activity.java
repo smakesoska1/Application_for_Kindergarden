@@ -2,6 +2,10 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
+/**
+ * Java Bean for list of possible activities for children
+ */
+
 public class Activity implements Idable{
     private int id;
     private String activityName;

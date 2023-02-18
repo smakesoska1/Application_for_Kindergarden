@@ -1,7 +1,9 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
-
+/**
+ * Java Bean for user director in app
+ */
 public class Director extends Person{
     private String username;
     private String password;
