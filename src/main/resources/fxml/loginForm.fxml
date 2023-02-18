@@ -59,13 +59,16 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </Label>
-      <ImageView fitHeight="93.0" fitWidth="279.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+      <ImageView fitHeight="105.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <image>
             <Image url="@../img/kindergarden.png" />
          </image>
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </GridPane.margin>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
       </ImageView>
    </children>
 </GridPane>
