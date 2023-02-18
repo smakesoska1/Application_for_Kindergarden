@@ -5,7 +5,9 @@ import ba.unsa.etf.rpr.domain.Activity;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 import java.util.List;
-
+/*
+*manager class for activity
+ */
 public class ActivityManager {
     public List<Activity> getAll() throws KindergardenException{
         return DaoFactory.activityDao().getAll();
