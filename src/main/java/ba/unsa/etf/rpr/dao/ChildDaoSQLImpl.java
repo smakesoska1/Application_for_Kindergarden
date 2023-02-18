@@ -10,14 +10,25 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * MySQL implementation of the DAO
+ */
+
 public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
 
     private Connection conn;
-
+    /**
+     * construct of ChildDaoSQLImplementation
+     */
     public ChildDaoSQLImpl() {
         super("child");
     }
 
+    /**
+     * get child from database base on ID
+     * @param -id primary key of child
+     * @return child from database
+     */
     @Override
     public Child getById(int id) throws KindergardenException {
         try {
@@ -46,7 +57,6 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
         }
     }
 
-
     private int getMaxId() throws KindergardenException{
         int id_child=0;
         try {
@@ -64,7 +74,11 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
         return id_child;
     }
 
-
+    /**
+     * Saves child into database
+     * @param -child bean for saving to database
+     * @return saved child with id field populated
+     */
     @Override
     public Child add(Child item) throws KindergardenException{
         int id_child=getMaxId()+1;
@@ -88,7 +102,11 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
             throw new KindergardenException(e.getMessage());
         }
     }
-
+    /**
+     * updates child's notes and activity in database based on id match.
+     * @param -child bean to be updated.
+     * @return updated version of bean child
+     */
     @Override
     public Child update(Child item) throws KindergardenException {
         try{
@@ -104,6 +122,10 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
     }
     }
 
+    /**
+     * Delete of item child from database with given id
+     * @param id - primary key of child
+     */
     @Override
     public void delete(int id) throws KindergardenException{
         try{
@@ -115,6 +137,11 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
             throw new KindergardenException(e.getMessage());
         }
     }
+
+    /**
+     * Lists all children from database.
+     * @return List of children from database
+     */
 
     @Override
     public List<Child> getAll() throws KindergardenException {
@@ -142,6 +169,12 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
         }
         return children;
     }
+
+    /**
+     * Lists all children from database from specific parent.
+     * @params-id of specific parent
+     * @return List of children of specific parent from database
+     */
 
     @Override
     public ArrayList<Child> searchChildrenOfParent(int parentid) throws KindergardenException {
@@ -171,6 +204,11 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
         return children;
     }
 
+    /**
+     * Lists all children from database from specific teacher.
+     * @params-id of specific teacher
+     * @return List of children of specific teacher from database
+     */
     @Override
     public ArrayList<Child> searchChildrenOfTeacher(int teacherid) throws KindergardenException {
         ArrayList<Child> children=new ArrayList<>();

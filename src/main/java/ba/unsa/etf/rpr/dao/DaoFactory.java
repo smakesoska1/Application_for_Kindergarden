@@ -2,6 +2,11 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Parent;
 
+/**
+ * Factory method for singleton implementation of DAOs
+ *
+ */
+
 public class DaoFactory {
     private static final DirectorDao directorDao = new DirectorDaoSQLImpl();
     private static final TeacherDao teacherDao = new TeacherDaoSQLImpl();

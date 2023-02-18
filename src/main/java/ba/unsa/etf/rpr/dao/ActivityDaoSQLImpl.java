@@ -6,14 +6,27 @@ import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * MySQL implementation of the DAO
+ */
 
 public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
 
     private Connection conn;
 
+    /**
+     * constructor of ActivityDaoSQLImplementation
+     */
+
     public ActivityDaoSQLImpl() {
         super("activity");
     }
+
+    /**
+     * get activity from database base on ID
+     * @param -id primary key of activity
+     * @return activity from database
+     */
 
     @Override
     public Activity getById(int id) throws KindergardenException {
@@ -35,6 +48,7 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
         }
     }
 
+
     private int getMaxId() throws KindergardenException{
         int id_activity=0;
         try {
@@ -51,7 +65,11 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
         return id_activity;
     }
 
-
+    /**
+     * Saves activity into database
+     * @param -activity bean for saving to database
+     * @return saved activity with id field populated
+     */
     @Override
     public Activity add(Activity item) throws KindergardenException {
         int id_activity=getMaxId()+1;
@@ -67,6 +85,11 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
         }
     }
 
+    /**
+     * Fully updates activity in database based on id match.
+     * @param -activity item bean to be updated.
+     * @return updated version of bean activity
+     */
     @Override
     public Activity update(Activity item) throws KindergardenException {
         try{
@@ -80,6 +103,11 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
         }
     }
 
+    /**
+     * Delete of item activity from database with given id
+     * @param id - primary key of activity
+     */
+
     @Override
     public void delete(int id) throws KindergardenException {
         try{
@@ -90,6 +118,11 @@ public class ActivityDaoSQLImpl extends  AbstractDao implements ActivityDao{
            throw new KindergardenException(e.getMessage());
         }
     }
+
+    /**
+     * Lists all activities from database.
+     * @return List of activities from database
+     */
 
     @Override
     public List<Activity> getAll() throws KindergardenException {

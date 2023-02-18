@@ -8,14 +8,27 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * MySQL implementation of the DAO
+ */
+
 public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao{
 
     private Connection conn;
+
+    /**
+     * constructor of ParentDaoSQLImplementation
+     */
 
    public ParentDaoSQLImpl() {
        super("parent");
    }
 
+    /**
+     * get parent from database base on ID
+     * @param -id primary key of parent
+     * @return parent from database
+     */
     @Override
     public Parent getById(int id) throws KindergardenException {
 
@@ -59,7 +72,11 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
         return id_parent;
     }
 
-
+    /**
+     * Saves parent into database
+     * @param -parent bean for saving to database
+     * @return saved parent with id field
+     */
     @Override
     public Parent add(Parent item) throws KindergardenException {
         int id_parent=getMaxId()+1;
@@ -81,6 +98,11 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
         }
     }
 
+    /**
+     * updates parent's phone and address in database based on id match.
+     * @param -parent item bean to be updated.
+     * @return updated version of bean parent
+     */
     @Override
     public Parent update(Parent item) throws KindergardenException {
         try{
@@ -96,6 +118,10 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
         }
     }
 
+    /**
+     * Delete of item parent from database with given id
+     * @param id - primary key of parent
+     */
     @Override
     public void delete(int id) throws KindergardenException {
         try{
@@ -107,6 +133,11 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
             throw new KindergardenException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Lists all parents from database.
+     * @return List of all parents from database
+     */
 
     @Override
     public List<Parent> getAll() throws KindergardenException {
@@ -133,6 +164,12 @@ public class ParentDaoSQLImpl extends AbstractDao implements ParentDao,PersonDao
         return parents;
     }
 
+    /**
+     * Returns parent that is found based on username.
+     *
+     * @param -username
+     * @return parent
+     */
     @Override
     public Parent searchParentByUsername(String username) throws KindergardenException {
         try {

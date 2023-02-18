@@ -9,15 +9,27 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * MySQL implementation of the DAO
+ */
+
 public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
 
     private Connection conn;
 
+    /**
+     * constructor of ChildNodesDaoSQLImplementation
+     */
     public ChildNotesDaoSQLImpl() {
         super("child_notes");
     }
 
 
+    /**
+     * get notes from database base on ID
+     * @param -id primary key of child's note
+     * @return note from database
+     */
     @Override
     public ChildNotes getById(int id) throws KindergardenException {
         try {
@@ -56,6 +68,11 @@ public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
     }
 
 
+    /**
+     * Saves note into database
+     * @param -Child Note bean for saving to database
+     * @return saved note with id field
+     */
     @Override
     public ChildNotes add(ChildNotes item) throws KindergardenException {
         int id_note=getMaxId()+1;
@@ -72,6 +89,11 @@ public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
         }
     }
 
+    /**
+     * Fully updates notes in database based on id match.
+     * @param -note item bean to be updated.
+     * @return updated version of bean child note
+     */
     @Override
     public ChildNotes update(ChildNotes item) throws KindergardenException {
         try{
@@ -87,6 +109,10 @@ public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
     }
 
 
+    /**
+     * Delete of item note from database with given id
+     * @param id - primary key of child note
+     */
     @Override
     public void delete(int id) throws KindergardenException {
         try{
@@ -99,6 +125,10 @@ public class ChildNotesDaoSQLImpl extends AbstractDao implements ChildNotesDao{
         }
     }
 
+    /**
+     * Lists all notes from database.
+     * @return List of notes from database
+     */
     @Override
     public List<ChildNotes> getAll() throws KindergardenException {
         List<ChildNotes> notes = new ArrayList<>();

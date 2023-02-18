@@ -9,9 +9,17 @@ import java.sql.*;
 import java.time.LocalTime;
 import java.util.List;
 
+/**
+ * MySQL implementation of the DAO
+ */
+
 public class DirectorDaoSQLImpl extends AbstractDao implements DirectorDao,PersonDao {
 
     private Connection conn;
+
+    /**
+     * constructor of DirectorDaoSQLImplementation
+     */
 
     public DirectorDaoSQLImpl() {
         super("director");
@@ -28,6 +36,11 @@ public class DirectorDaoSQLImpl extends AbstractDao implements DirectorDao,Perso
         return null;
     }
 
+    /**
+     * Fully updates director in database based on id match.
+     * @param -director item bean to be updated.
+     * @return updated version of bean director
+     */
     @Override
     public Director update(Director item) throws KindergardenException {
         try{
@@ -57,6 +70,12 @@ public class DirectorDaoSQLImpl extends AbstractDao implements DirectorDao,Perso
         return null;
     }
 
+    /**
+     * Returns director that is found based on username.
+     *
+     * @param -username
+     * @return director
+     */
     @Override
     public Director searchDirectorByUsername(String username) throws KindergardenException {
         try {

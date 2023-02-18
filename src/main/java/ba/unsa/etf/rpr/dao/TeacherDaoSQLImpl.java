@@ -9,15 +9,27 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * MySQL implementation of the DAO
+ */
+
 public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonDao {
 
     private Connection conn;
+
+    /**
+     * constructor of TeacherDaoSQLImplementation
+     */
 
     public TeacherDaoSQLImpl() {
         super("teacher");
     }
 
-
+    /**
+     * get teacher from database base on ID
+     * @param -id primary key of teacher
+     * @return teacher from database
+     */
     @Override
     public Teacher getById(int id) throws KindergardenException {
 
@@ -65,6 +77,11 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
     }
 
 
+    /**
+     * Saves teacher into database
+     * @param -teacher bean for saving to database
+     * @return saved teacher with id field
+     */
     @Override
     public Teacher add(Teacher item) throws KindergardenException {
         int id_teacher = getMaxId() + 1;
@@ -87,6 +104,11 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
         }
     }
 
+    /**
+     * updates teacher's start work and end work in database based on id match.
+     * @param -teacher item bean to be updated.
+     * @return updated version of bean teacher
+     */
     @Override
     public Teacher update(Teacher item) throws KindergardenException {
 
@@ -103,6 +125,10 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
         }
     }
 
+    /**
+     * Delete of item teacher from database with given id
+     * @param id - primary key of teacher
+     */
     @Override
     public void delete(int id) throws KindergardenException {
         try {
@@ -115,6 +141,10 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
         }
     }
 
+    /**
+     * Lists all teachers from database.
+     * @return List of all teachers from database
+     */
     @Override
     public List<Teacher> getAll() throws KindergardenException {
 
@@ -142,6 +172,12 @@ public class TeacherDaoSQLImpl extends AbstractDao implements TeacherDao,PersonD
         return teachers;
     }
 
+    /**
+     * Returns teacher that is found based on username.
+     *
+     * @param -username
+     * @return teacher
+     */
     @Override
     public Teacher searchTeacherByUsername(String username) throws KindergardenException {
         try {

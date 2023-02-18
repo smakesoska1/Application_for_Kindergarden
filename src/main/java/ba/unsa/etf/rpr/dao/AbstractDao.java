@@ -8,7 +8,6 @@ import java.util.Properties;
 /**
  * Abstract class that is used to implement connection to database using database properties configuration
  */
-
 public class AbstractDao {
     private static Connection connection = null;
     private String tableName;
