@@ -18,11 +18,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test class  for Parent Mock
+ */
+
 public class ParentMock {
     private ParentDaoSQLImpl parentDao;
     private ParentManager parentManager;
     List<Parent> parents;
 
+    /**
+     * This method will be called before each test method
+     */
     @BeforeEach
     public void initialize(){
         parentDao = Mockito.mock(ParentDaoSQLImpl.class);
@@ -41,7 +48,9 @@ public class ParentMock {
         parents.add(parent);
     }
 
-
+    /**
+     * In this method we will test if certain parent exist in database
+     */
     @Test
     public void validateIfParentExist() throws KindergardenException {
             MockedStatic<DaoFactory> dao= Mockito.mockStatic(DaoFactory.class);
@@ -59,6 +68,10 @@ public class ParentMock {
         dao.close();
     }
 
+    /**
+     * Adding a new parent
+     * @throws KindergardenException
+     */
     @Test
     public void addParent() throws KindergardenException {
         Parent parent = new Parent();

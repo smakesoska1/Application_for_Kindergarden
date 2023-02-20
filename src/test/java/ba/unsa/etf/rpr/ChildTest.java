@@ -1,20 +1,25 @@
 package ba.unsa.etf.rpr;
 
-import ba.unsa.etf.rpr.business.ChildManager;
-import ba.unsa.etf.rpr.dao.Dao;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.*;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
-import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test class for Child
+ *
+ */
+
 public class ChildTest {
+
+    /**
+     * checking method searchChildrenOfTeacher
+     */
 
     @Test
 
@@ -45,6 +50,9 @@ public class ChildTest {
         assertEquals(children.toString(),original.toString());
     }
 
+    /**
+     * checking method searchChildrenOfParents
+     */
 
     @Test
 

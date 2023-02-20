@@ -12,7 +12,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+/**
+ * Test for activity class
+ *
+ */
+
 public class ActivityTest {
+
+    /**
+     * checking update method of activity class, if activity is updated with new name
+     */
 
     @Test
     public void testUpdateActivity() throws KindergardenException {

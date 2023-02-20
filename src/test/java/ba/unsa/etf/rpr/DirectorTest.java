@@ -6,7 +6,15 @@ import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for Director Manager
+ */
+
 public class DirectorTest {
+
+    /**
+     * checking method searchDirectorByUsername
+     */
 
     @Test
     public void searchByUsernameDirectorTest() throws KindergardenException {

@@ -5,8 +5,16 @@ import ba.unsa.etf.rpr.domain.ChildNotes;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+/**
+ * Test class for class child notes manager
+ *
+ */
 
 public class ChildNotesTest {
+
+    /**
+     *checking method getById from child notes manager
+     */
 
     @Test
     public void getByIdNoteTest() throws KindergardenException {

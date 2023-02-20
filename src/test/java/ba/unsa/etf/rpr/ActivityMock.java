@@ -18,11 +18,19 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+/**
+ * Test class  for Activity Mock
+ */
+
 public class ActivityMock {
     private ActivityManager activityManager;
     private Activity activity;
     private ActivityDaoSQLImpl activityDao;
     private List<Activity> activities;
+
+    /**
+     * This method will be called before each test method
+     */
 
     @BeforeEach
     public void initialization() throws KindergardenException {
@@ -38,6 +46,9 @@ public class ActivityMock {
         activities.add(activity2);
     }
 
+    /**
+     * Testing getAll function for mock objects from activity manager
+     */
     @Test
     public void testGetAll() throws KindergardenException {
         Mockito.when(activityManager.getAll()).thenReturn(activities);

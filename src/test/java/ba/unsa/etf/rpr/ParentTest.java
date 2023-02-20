@@ -6,7 +6,14 @@ import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for Parent Manager
+ */
+
 public class ParentTest {
+    /**
+     * checking if delete method in parent manager throws exception
+     */
 
     @Test
     public void parentDeleteTest (){
