@@ -20,6 +20,11 @@ import java.util.Optional;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
+/**
+ * JavaFX controller for director controller, making four lists with items, adding, viewing and deleting of activities and persons
+ *
+ */
+
 public class DirectorScreenController {
     @FXML
     private Button logOutBtn;

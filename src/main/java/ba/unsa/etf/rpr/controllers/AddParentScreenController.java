@@ -9,7 +9,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
+/**
+ * JavaFX controller for adding parent and setting up alert
+ *
+ */
 public class AddParentScreenController {
     @FXML
     private TextField parentName;

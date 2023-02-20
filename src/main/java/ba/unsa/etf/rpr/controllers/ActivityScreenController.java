@@ -13,6 +13,11 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
+/**
+ * JavaFX controller for creating new activity
+ *
+ */
+
 public class ActivityScreenController {
     @FXML
     private TextField textFieldActivity;
@@ -22,7 +27,9 @@ public class ActivityScreenController {
     private ListView activityList;
 
 
-
+    /**
+     * save button event handler (add activity)
+     */
     public void addSave() throws KindergardenException {
         Activity activity=new Activity();
         ActivityManager manager=new ActivityManager();
@@ -33,6 +40,11 @@ public class ActivityScreenController {
             stage.close();
         }
     }
+
+    /**
+     * cancel button event handler
+     * @param event
+     */
 
     public void close(ActionEvent event){
         Stage stage = (Stage) btnClose.getScene().getWindow();

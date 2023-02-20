@@ -6,6 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/**
+ * JavaFX controller for viewing and following child's info and changes made by teacher
+ *
+ */
+
 public class ViewChildScreenController {
     private Child child;
     @FXML

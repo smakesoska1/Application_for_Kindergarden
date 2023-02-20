@@ -24,6 +24,11 @@ import java.util.Optional;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
+/**
+ * JavaFX controller for initialization of list of children from a certain teacher, adding and deleting notes and activities
+ *
+ */
+
 public class TeacherScreenController{
     @FXML
     private ListView childrenList;

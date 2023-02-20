@@ -10,7 +10,10 @@ import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
 import java.util.List;
-
+/**
+ * JavaFX controller for viewing and following child's info
+ *
+ */
 
 public class ParentScreenController {
     @FXML

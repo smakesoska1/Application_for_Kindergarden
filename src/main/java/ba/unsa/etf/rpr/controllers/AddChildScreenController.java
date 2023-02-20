@@ -15,6 +15,11 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * JavaFX controller for adding child and setting label's fields
+ *
+ */
+
 public class AddChildScreenController {
     @FXML
     private TextField childName;

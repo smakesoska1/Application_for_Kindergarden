@@ -16,6 +16,11 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
+/**
+ * JavaFX controller for editing childs info about activities and teacher's notes
+ *
+ */
+
 public class EditChildController {
     private Child child;
     @FXML

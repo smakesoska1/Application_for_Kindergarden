@@ -14,7 +14,10 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * JavaFX controller for adding teacher
+ *
+ */
 public class AddTeacherScreenController {
     @FXML
     private TextField teacherName;

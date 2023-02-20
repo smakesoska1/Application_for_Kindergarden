@@ -12,6 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * JavaFX controller for adding child's notes
+ */
+
 public class NoteScreenController {
     @FXML
     private TextField textFieldNote;

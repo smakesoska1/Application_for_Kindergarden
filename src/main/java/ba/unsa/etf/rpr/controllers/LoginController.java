@@ -21,6 +21,11 @@ import java.io.IOException;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
+/**
+ * JavaFX controller for login users, setting up alerts for incorrect username and passwords
+ *
+ */
+
 public class LoginController {
     public TextField usernameid;
     public PasswordField passwordField;
