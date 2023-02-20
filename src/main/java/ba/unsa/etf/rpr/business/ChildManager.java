@@ -7,6 +7,10 @@ import ba.unsa.etf.rpr.exceptions.KindergardenException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Business Logic Layer for management of Child
+ */
+
 public class ChildManager {
 
     public List<Child> getAll() throws KindergardenException {

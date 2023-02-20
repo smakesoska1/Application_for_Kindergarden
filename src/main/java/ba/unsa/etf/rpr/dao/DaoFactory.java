@@ -3,7 +3,7 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Parent;
 
 /**
- * Factory method for singleton implementation of DAOs
+ * Factory method for implementation of DAOs
  *
  */
 

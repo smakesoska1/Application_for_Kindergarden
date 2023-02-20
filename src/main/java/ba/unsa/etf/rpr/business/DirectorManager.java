@@ -4,6 +4,9 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Director;
 import ba.unsa.etf.rpr.domain.Parent;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
+/**
+ * Business Logic Layer for management of Director
+ */
 
 public class DirectorManager {
 

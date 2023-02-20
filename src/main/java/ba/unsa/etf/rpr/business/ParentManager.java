@@ -8,6 +8,10 @@ import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 import java.util.List;
 
+/**
+ * Business Logic Layer for management of Parent
+ */
+
 public class ParentManager {
 
     public void validateUsername(String username) throws KindergardenException {

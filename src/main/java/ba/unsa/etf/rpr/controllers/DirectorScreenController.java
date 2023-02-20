@@ -15,7 +15,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
+
 import java.util.Optional;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;

@@ -5,8 +5,8 @@ import ba.unsa.etf.rpr.domain.Activity;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
 
 import java.util.List;
-/*
-*manager class for activity
+/**
+ * Business Logic Layer for management of Activity
  */
 public class ActivityManager {
     public List<Activity> getAll() throws KindergardenException{

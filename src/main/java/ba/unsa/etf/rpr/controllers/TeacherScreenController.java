@@ -140,17 +140,17 @@ public class TeacherScreenController{
         javafx.scene.Parent root = null;
         try {
             Child selectedChild = (Child) childrenList.getSelectionModel().getSelectedItem();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editChild.fxml"));
-            EditChildController editChildController = new EditChildController();
-            loader.setController(editChildController);
-            editChildController.setChild(selectedChild);
-            root = loader.load();
-            stage.setTitle("Edit child activity and notes");
-            stage.setScene(new Scene(root,USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-            stage.setResizable(false);
-            stage.show();
-            stage.toFront();
-        } catch (IOException e) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editChild.fxml"));
+                EditChildController editChildController = new EditChildController();
+                loader.setController(editChildController);
+                editChildController.setChild(selectedChild);
+                root = loader.load();
+                stage.setTitle("Edit child activity and notes");
+                stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+                stage.setResizable(false);
+                stage.show();
+                stage.toFront();
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }

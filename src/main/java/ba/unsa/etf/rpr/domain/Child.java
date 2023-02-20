@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.domain;
 
+import javafx.collections.ObservableArray;
+
 import java.time.LocalTime;
 import java.util.Objects;
 

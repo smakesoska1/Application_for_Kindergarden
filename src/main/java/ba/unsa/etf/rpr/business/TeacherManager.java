@@ -4,8 +4,14 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Parent;
 import ba.unsa.etf.rpr.domain.Teacher;
 import ba.unsa.etf.rpr.exceptions.KindergardenException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 import java.util.List;
+
+/**
+ * Business Logic Layer for management of Techer
+ */
 
 public class TeacherManager {
 
@@ -51,7 +57,7 @@ public class TeacherManager {
         DaoFactory.teacherDao().update(t);
     }
 
-    public Teacher add(Teacher t) throws KindergardenException{
+    public Teacher add(Teacher t) throws KindergardenException {
         validateUsername(t.getUsername());
         return DaoFactory.teacherDao().add(t);
     }
