@@ -70,8 +70,6 @@ public class LoginController {
                 alert.showAndWait();
             }
 
-
-
         if (whoWantsToLogin instanceof Director) {
             openDirectorHomeScene();
             usernameid.getScene().getWindow().hide();

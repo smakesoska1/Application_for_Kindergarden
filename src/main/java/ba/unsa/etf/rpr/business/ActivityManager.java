@@ -9,6 +9,9 @@ import java.util.List;
  * Business Logic Layer for management of Activity
  */
 public class ActivityManager {
+
+
+
     public List<Activity> getAll() throws KindergardenException{
         return DaoFactory.activityDao().getAll();
     }

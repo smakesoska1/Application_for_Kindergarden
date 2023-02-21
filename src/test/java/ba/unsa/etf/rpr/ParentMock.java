@@ -27,6 +27,7 @@ public class ParentMock {
     private ParentManager parentManager;
     List<Parent> parents;
 
+
     /**
      * This method will be called before each test method
      */
@@ -37,6 +38,7 @@ public class ParentMock {
         parents=new ArrayList<>();
 
         Parent parent = new Parent();
+
         parent.setId(5);
         parent.setFirstName("Adnan");
         parent.setSurname("Hodzic");
