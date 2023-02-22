@@ -129,7 +129,7 @@ public class ChildDaoSQLImpl extends AbstractDao implements ChildDao{
     @Override
     public void delete(int id) throws KindergardenException{
         try{
-            PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM child WHERE id = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("DELETE FROM child WHERE id_child = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){

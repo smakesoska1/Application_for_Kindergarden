@@ -5,8 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-
-<GridPane prefHeight="283.0" prefWidth="344.0" style="-fx-background-color: #ffd4db;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.LoginController">
+<GridPane prefHeight="283.0" prefWidth="395.0" style="-fx-background-color: #ffd4db;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.LoginController">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="70.2" prefWidth="86.2" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="183.2" prefWidth="258.2" />
@@ -49,7 +48,7 @@
             <Insets bottom="5.0" left="5.0" top="5.0" />
          </padding>
          <GridPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </Label>
       <Label text="Password:" GridPane.rowIndex="2">
@@ -57,10 +56,10 @@
             <Insets bottom="5.0" left="5.0" top="5.0" />
          </padding>
          <GridPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </Label>
-      <ImageView fitHeight="105.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <ImageView fitHeight="103.0" fitWidth="296.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <image>
             <Image url="@../img/kindergarden.png" />
          </image>
